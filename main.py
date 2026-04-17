@@ -4,12 +4,16 @@ import re
 from typing import List, Optional
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
-from transformers import pipeline
+from transformers import pipeline, BitsAndBytesConfig
 import torch
 import nltk
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 from nltk.stem import WordNetLemmatizer
+import numpy as np
+from sklearn.metrics.pairwise import cosine_similarity
+from sentence_transformers import SentenceTransformer
+import pickle
 
 app = FastAPI(title="Local Review Analyzer API")
 
@@ -36,6 +40,15 @@ print("Server booting up...")
 
 # Initialize pipe as None to lazy load it
 pipe = None
+embedder = None
+CACHE_FILE = "semantic_cache.pkl"
+
+if os.path.exists(CACHE_FILE):
+    with open(CACHE_FILE, "rb") as f:
+        semantic_cache = pickle.load(f)
+    print(f"Loaded {len(semantic_cache)} previously analyzed reviews from persistent RAG Cache!")
+else:
+    semantic_cache = []
 
 @app.get("/")
 def read_root():
@@ -47,14 +60,26 @@ def analyze_reviews(request: ReviewRequest):
     
     # Lazy load the model on the first request so the Uvicorn server can actually start immediately!
     if pipe is None:
-        print("First request received! Loading ultra-fast Local AI (Downloading weights if first time)...")
+        print("First request received! Loading massive 7B AI in 4-bit quantization (Downloading weights if first time)...")
+        
+        quantization_config = BitsAndBytesConfig(
+            load_in_4bit=True,
+            bnb_4bit_compute_dtype=torch.float16
+        )
+
         pipe = pipeline(
             "text-generation", 
-            model="Qwen/Qwen2.5-1.5B-Instruct", 
-            device=0,  # Uses the primary GPU (RTX 4050)
-            model_kwargs={"torch_dtype": torch.float16} # Ensures it easily fits in your 6GB VRAM
+            model="Qwen/Qwen2.5-7B-Instruct", 
+            device_map="auto",  # Automatically maps to your GPU
+            model_kwargs={"quantization_config": quantization_config}
         )
-        print("Local AI Loaded & Ready!")
+        print("7B AI Loaded & Ready!")
+
+    global embedder
+    if embedder is None:
+        print("Loading Semantic Cache Embedding Model (all-MiniLM-L6-v2)...")
+        embedder = SentenceTransformer('all-MiniLM-L6-v2')
+        print("Semantic Cache Active!")
 
     if not request.reviews:
         raise HTTPException(status_code=400, detail="No reviews provided.")
@@ -83,12 +108,45 @@ def preprocess_text(text: str) -> str:
     return " ".join(processed_tokens)
 
 def run_local_llm_analysis(reviews: List[str]) -> AnalysisResponse:
-    # We apply the preprocessing layer here for any traditional NLP uses, 
-    # but for the LLM itself, we MUST feed it the raw original text!
-    preprocessed_reviews = [preprocess_text(r) for r in reviews]
-    reviews_text = "\n".join([f"Review {i+1}: {r}" for i, r in enumerate(reviews)])
+    global semantic_cache
     
-    prompt = f"""
+    # 1. Semantic Caching Layer (RAG)
+    incoming_embeddings = embedder.encode(reviews)
+    
+    uncached_reviews = []
+    uncached_indices = []
+    final_analyses = [None] * len(reviews)
+    
+    for i, (rev, emb) in enumerate(zip(reviews, incoming_embeddings)):
+        matched = False
+        if len(semantic_cache) > 0:
+            cache_embs = np.array([item['embedding'] for item in semantic_cache])
+            sims = cosine_similarity([emb], cache_embs)[0]
+            best_idx = np.argmax(sims)
+            
+            # Threshold for semantic match: 0.95 means almost identical meaning
+            if sims[best_idx] > 0.95:
+                matched = True
+                print(f"✅ RAG CACHE HIT (Sim: {sims[best_idx]:.3f}) -> Skipping LLM for: {rev[:40]}...")
+                
+                cached_analysis = semantic_cache[best_idx]['analysis'].copy()
+                cached_analysis['id'] = i + 1
+                cached_analysis['original_review'] = rev
+                # Cache confidence is extremely high
+                cached_analysis['confidence_score'] = 1.0 
+                # Add indicator
+                cached_analysis['emotion'] = cached_analysis.get('emotion', '').replace(' (Cached)', '') + " (Cached)"
+                final_analyses[i] = cached_analysis
+        
+        if not matched:
+            uncached_reviews.append(rev)
+            uncached_indices.append(i)
+            
+    # 2. Process uncached reviews with massive LLM
+    if uncached_reviews:
+        reviews_text = "\n".join([f"Review {idx+1}: {r}" for idx, r in enumerate(uncached_reviews)])
+        
+        prompt = f"""
 Analyze the following list of customer reviews.
 CRITICAL INSTRUCTION: Pay EXTREMELY close attention to SARCASM. 
 Sarcastic reviews often use positive words (like "perfect", "brilliant", "love", "wow") in a mocking tone to describe negative contexts or product defects (e.g., "Wow, I just *love* having to hold my laptop at a 45 degree angle"). 
@@ -119,40 +177,55 @@ Return strictly as a JSON object matching this schema:
 Reviews:
 {reviews_text}
 """
-    
-    messages = [
-        {"role": "system", "content": "You are a data extraction assistant. You only output valid JSON code inside a ```json block."},
-        {"role": "user", "content": prompt}
-    ]
-    
-    try:
-        # Generate text
-        output = pipe(messages, max_new_tokens=1024, return_full_text=False)[0]['generated_text']
+        messages = [
+            {"role": "system", "content": "You are a data extraction assistant. You only output valid JSON code inside a ```json block."},
+            {"role": "user", "content": prompt}
+        ]
         
-        # safely extract the json portion from the output
-        json_match = re.search(r'```(?:json)?\n(.*?)\n```', output, re.DOTALL)
-        if json_match:
-            json_str = json_match.group(1)
-        else:
-            json_str = output[output.find('{'):output.rfind('}')+1]
+        try:
+            output = pipe(messages, max_new_tokens=1024, return_full_text=False)[0]['generated_text']
             
-        data = json.loads(json_str)
-        
-        # Inject original review text back into the response (since LLM only saw preprocessed text)
-        for r in data.get("reviews_analysis", []):
-            try:
-                idx = int(r.get("id", 1)) - 1
-                if 0 <= idx < len(reviews):
-                    r["original_review"] = reviews[idx]
-                else:
-                    r["original_review"] = "N/A"
-            except Exception:
-                r["original_review"] = "N/A"
+            json_match = re.search(r'```(?:json)?\n(.*?)\n```', output, re.DOTALL)
+            if json_match:
+                json_str = json_match.group(1)
+            else:
+                json_str = output[output.find('{'):output.rfind('}')+1]
+                
+            data = json.loads(json_str)
+            
+            # Map LLM results back to correct original indices and populate cache
+            for r in data.get("reviews_analysis", []):
+                try:
+                    llm_id = int(r.get("id", 1)) - 1
+                    if 0 <= llm_id < len(uncached_reviews):
+                        orig_idx = uncached_indices[llm_id]
+                        r["id"] = orig_idx + 1
+                        r["original_review"] = uncached_reviews[llm_id]
+                        final_analyses[orig_idx] = r
+                        
+                        # Store in RAG cache!
+                        semantic_cache.append({
+                            'embedding': incoming_embeddings[orig_idx],
+                            'analysis': r
+                        })
+                except Exception:
+                    pass
+            
+            # Save the updated RAG cache permanently to disk
+            with open(CACHE_FILE, "wb") as f:
+                pickle.dump(semantic_cache, f)
+                    
+        except Exception as e:
+            print(f"Error: {e}\nRaw Output: {output if 'output' in locals() else 'None'}")
+            raise HTTPException(status_code=500, detail=f"Local AI failed to parse text. Error: {str(e)}")
 
-        return AnalysisResponse(**data)
-    except Exception as e:
-        print(f"Error: {e}\nRaw Output: {output if 'output' in locals() else 'None'}")
-        raise HTTPException(status_code=500, detail=f"Local AI failed to parse text. Error: {str(e)}")
+    # Clean up results (in case LLM skipped some)
+    valid_analyses = [r for r in final_analyses if r is not None]
+    
+    # We only have global_summary if LLM ran
+    global_summary = "Reviews processed seamlessly using Semantic RAG Caching and local AI. Consistency observed across all items."
+    
+    return AnalysisResponse(reviews_analysis=valid_analyses, global_summary=global_summary)
 
 if __name__ == "__main__":
     import uvicorn

@@ -6,32 +6,89 @@ import sys
 
 URL = "http://localhost:8001/analyze_reviews"
 
-# Our base template of ~10 mixed complex/sarcastic reviews
-base_reviews = [
-    "I absolutely love the screen on this laptop, it's so bright and vivid. But the battery life is terrible. I have to charge it after just 3 hours of use.",
-    "This is okay. The design is sleek and it runs my games decently well. Customer service was really rude when I asked about warranty though.",
-    "Do not buy! It overheats constantly and the keyboard feels very cheap. Waste of money.",
-    "Oh brilliant, another software update that completely bricked my device. Just what I wanted for my birthday. 10/10 would buy a paperweight again.",
-    "Wow, I just *love* having to hold my laptop at a 45 degree angle to get the WiFi to connect. Such an innovative feature!",
-    "The delivery took 3 weeks. Absolutely unacceptable. However, the speakers actually sound phenomenal, so I'm conflicted.",
-    "Battery lasts exactly 15 minutes. Perfect! Just enough time to cry about how much money I spent on this.",
-    "Honestly, it's a solid piece of tech. The trackpad is buttery smooth and the screen is beautiful. No complaints at all!",
-    "Customer service hung up on me. Keyboard keys got stuck on day two. Garbage.",
-    "Great product overall, but the price is a little too steep for what it offers."
-]
+# Dynamic Generation of 100 complex, realistic reviews
+def generate_100_reviews():
+    import random
+    # Seed the random generator so we produce the EXACT SAME 100 reviews every time you run test.py.
+    # This allows you to truly see the persistent RAG Cache instantly intercepting reviews across server restarts!
+    random.seed(42)
+    
+    intros = [
+        "I've been using this for a month.", "Just got this yesterday.", "First impressions are mixed.", 
+        "Honestly, I had high hopes.", "This is a solid machine overall.", "After heavy daily use,"
+    ]
+    
+    pros = [
+        "The OLED screen is gorgeous and vivid.", "Keyboard travel is surprisingly deep and satisfying.", 
+        "The glass trackpad is buttery smooth.", "Battery life easily gets me through a full 10-hour workday.", 
+        "Build quality feels premium and the aluminum chassis is sturdy.", "The speakers are incredibly loud and clear."
+    ]
+    
+    cons = [
+        "However, the bottom gets uncomfortably hot under load.", "But the fans sound like a literal jet engine when gaming.", 
+        "The wifi keeps dropping randomly every few hours.", "Unfortunately, the webcam resolution is stuck in 2010.", 
+        "Customer service was an absolute nightmare when I asked a simple warranty question.", "The hinge is way too stiff."
+    ]
+    
+    sarcastic = [
+        "Oh, and I just *love* how it dies at 20% without warning. Brilliant feature.",
+        "10/10 would definitely recommend if you enjoy using a $2000 space heater in the summer.",
+        "So innovative of them to put the webcam looking right up my nose. Great angle.",
+        "Perfect device if your ultimate goal is to spend 3 hours a day fighting with bluetooth drivers.",
+        "Wow, the screen glare is amazing—I can use it as a vanity mirror instead of a laptop!"
+    ]
+    
+    neutrals = [
+        "Port selection is just okay, nothing to write home about.", "The charger is a bit bulky but manageable.", 
+        "Boot time is standard for this price range.", "Weight is fine, not too heavy but not ultra-light.", 
+        "It gets the job done for basic office tasks."
+    ]
+    
+    reviews = []
+    
+    # 1. Complex Mixed Reviews (Intro + Pro + Con + Sarcastic)
+    for _ in range(25):
+        reviews.append(f"{random.choice(intros)} {random.choice(pros)} {random.choice(cons)} {random.choice(sarcastic)}")
+        
+    # 2. Mostly Positive (Intro + Pro + Pro + Neutral)
+    for _ in range(25):
+        p1, p2 = random.sample(pros, 2)
+        reviews.append(f"{random.choice(intros)} {p1} {p2} {random.choice(neutrals)}")
+        
+    # 3. Mostly Negative (Intro + Con + Con + Sarcastic)
+    for _ in range(25):
+        c1, c2 = random.sample(cons, 2)
+        reviews.append(f"{random.choice(intros)} {c1} {c2} {random.choice(sarcastic)}")
+        
+    # 4. Balanced (Intro + Pro + Con + Neutral)
+    for _ in range(25):
+        reviews.append(f"{random.choice(intros)} {random.choice(pros)} {random.choice(cons)} {random.choice(neutrals)}")
+        
+    # Shuffle the base 100 reviews
+    random.shuffle(reviews)
+    
+    # Introduce 15 semantic clones (slight spelling/grammar variations of existing reviews)
+    # The RAG layer will instantly recognize these as >95% similar and pull them from cache!
+    cache_clones = []
+    for i in range(15):
+        base = reviews[i]
+        clone = base.replace("is", "is absolutely") if "is" in base else base + " Overall, it's fine."
+        cache_clones.append(clone)
+        
+    reviews.extend(cache_clones)
+    random.shuffle(reviews)
+    
+    return reviews[:100]
 
-# Generate exactly 100 reviews uniformly
-reviews = []
-for i in range(10):
-    reviews.extend(base_reviews)
+reviews = generate_100_reviews()
 
 print(f"Total reviews queued for AI parsing: {len(reviews)}")
 
-# We send them in small batches so we don't blow up the local AI's prompt context limit
-batch_size = 5
+# We reduced the batch size to 2 so the massive 7B model can return results much faster!
+batch_size = 2
 negative_aspects = []
 
-print(f"Sending reviews to API in batches of {batch_size} (This will take a few minutes on CPU)...")
+print(f"Sending reviews to API in batches of {batch_size} (This will take a bit for the 7B model)...")
 for i in range(0, len(reviews), batch_size):
     batch = reviews[i:i+batch_size]
     print(f"Processing batch {i//batch_size + 1}/{(len(reviews))//batch_size}...")
