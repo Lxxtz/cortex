@@ -4,9 +4,8 @@ import re
 from typing import List, Optional
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
-from transformers import pipeline, BitsAndBytesConfig
-import torch
 import nltk
+from openai import OpenAI
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 from nltk.stem import WordNetLemmatizer
@@ -38,8 +37,13 @@ class AnalysisResponse(BaseModel):
 
 print("Server booting up...")
 
-# Initialize pipe as None to lazy load it
-pipe = None
+# Initialize OpenAI client for OpenRouter
+OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY", "your_openrouter_api_key_here")
+client = OpenAI(
+    base_url="https://openrouter.ai/api/v1",
+    api_key="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",
+)
+
 embedder = None
 CACHE_FILE = "semantic_cache.pkl"
 
@@ -56,26 +60,8 @@ def read_root():
 
 @app.post("/analyze_reviews", response_model=AnalysisResponse)
 def analyze_reviews(request: ReviewRequest):
-    global pipe
-    
-    # Lazy load the model on the first request so the Uvicorn server can actually start immediately!
-    if pipe is None:
-        print("First request received! Loading massive 7B AI in 4-bit quantization (Downloading weights if first time)...")
-        
-        quantization_config = BitsAndBytesConfig(
-            load_in_4bit=True,
-            bnb_4bit_compute_dtype=torch.float16
-        )
-
-        pipe = pipeline(
-            "text-generation", 
-            model="Qwen/Qwen2.5-7B-Instruct", 
-            device_map="auto",  # Automatically maps to your GPU
-            model_kwargs={"quantization_config": quantization_config}
-        )
-        print("7B AI Loaded & Ready!")
-
     global embedder
+
     if embedder is None:
         print("Loading Semantic Cache Embedding Model (all-MiniLM-L6-v2)...")
         embedder = SentenceTransformer('all-MiniLM-L6-v2')
@@ -183,8 +169,21 @@ Reviews:
         ]
         
         try:
-            output = pipe(messages, max_new_tokens=1024, return_full_text=False)[0]['generated_text']
+            # Using Qwen 2.5 72B (the largest open Qwen) for maximum intelligence on OpenRouter!
+            response = client.chat.completions.create(
+                model="qwen/qwen-2.5-72b-instruct",
+                messages=messages,
+                max_tokens=1024,
+                temperature=0.1
+            )
+            output = response.choices[0].message.content
             
+            if not output:
+                # OpenRouter free tier often returns None when overwhelmed or rate limited.
+                # Provide a safe fallback instead of crashing the server.
+                print("⚠️ OpenRouter returned empty content. You might be rate-limited!")
+                output = '```json\n{"global_summary": "Batch skipped due to API rate limit / empty response.", "reviews_analysis": []}\n```'
+                
             json_match = re.search(r'```(?:json)?\n(.*?)\n```', output, re.DOTALL)
             if json_match:
                 json_str = json_match.group(1)
