@@ -13,6 +13,9 @@ import numpy as np
 from sklearn.metrics.pairwise import cosine_similarity
 from sentence_transformers import SentenceTransformer
 import pickle
+from dotenv import load_dotenv
+
+load_dotenv()
 
 app = FastAPI(title="Local Review Analyzer API")
 
@@ -37,11 +40,14 @@ class AnalysisResponse(BaseModel):
 
 print("Server booting up...")
 
-# Initialize OpenAI client for OpenRouter
-OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY", "your_openrouter_api_key_here")
+# Initialize OpenAI client for OpenRouter using .env key
+api_key = os.getenv("OPENROUTER_API_KEY")
+if not api_key or api_key == "your_api_key_here":
+    print("🚨 CRITICAL WARNING: OPENROUTER_API_KEY not found in .env! Please add it to your .env file.")
+
 client = OpenAI(
     base_url="https://openrouter.ai/api/v1",
-    api_key="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",
+    api_key=api_key,
 )
 
 embedder = None

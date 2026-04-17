@@ -1,196 +1,133 @@
 from playwright.sync_api import sync_playwright
 import json
 import time
+import re
 
-def scrape_amazon_reviews(page, product_name):
-    print(f"[*] Searching Amazon for '{product_name}'...")
+def scrape_amazon_tech(page, product_name, target_count=100):
+    print(f"\n[*] Searching Amazon for '{product_name}'...")
     search_url = f"https://www.amazon.in/s?k={product_name.replace(' ', '+')}"
+    
+    reviews_data = []
     
     try:
         page.goto(search_url, timeout=60000)
         time.sleep(3)
         
         if "captcha" in page.title().lower() or page.locator("form[action='/errors/validateCaptcha']").is_visible():
-            print("[-] Amazon hit us with a CAPTCHA wall. Skipping Amazon.")
+            print("[-] CAPTCHA hit. Skipping.")
             return []
             
-        # Find first non-sponsored product link
-        # Sponsored links contain '/sspa/' in their href. We MUST skip them!
         product_link = page.locator('a.a-link-normal.s-no-outline:not([href*="/sspa/"])').first
         if not product_link.is_visible():
-            # Fallback to text link if image link isn't found
             product_link = page.locator('a.a-text-normal:not([href*="/sspa/"])').first
             if not product_link.is_visible():
-                print("[-] Could not find a non-sponsored product on Amazon.")
+                print(f"[-] Could not find product: {product_name}")
                 return []
-            
+                
         href = product_link.get_attribute('href')
         product_url = "https://www.amazon.in" + href
-        print(f"[*] Found Amazon Product. Fetching reviews from: {product_url.split('?')[0]}")
+        print(f"[*] Found Product. Navigating to: {product_url.split('?')[0]}")
         
         page.goto(product_url, timeout=60000)
         time.sleep(3)
         
-        # Aggressively scroll to load dynamic elements
         page.evaluate("window.scrollTo(0, document.body.scrollHeight/2)")
         time.sleep(2)
         page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
         time.sleep(2)
         
-        # Click "See all reviews" to get to the dedicated review page
         see_all = page.locator('a[data-hook="see-all-reviews-link-foot"]')
         if see_all.is_visible():
             see_all.click()
             time.sleep(4)
-        
-        reviews = []
-        # Scrape up to 5 pages of reviews
-        for p in range(5):
-            review_elements = page.locator('span[data-hook="review-body"]')
-            count = review_elements.count()
-            for i in range(count):
-                text = review_elements.nth(i).inner_text().strip()
-                if text and text not in reviews:
-                    reviews.append(text)
-            
-            # Go to next page
-            next_btn = page.locator('li.a-last a')
-            if next_btn.is_visible():
-                next_btn.click()
-                time.sleep(3)
-            else:
-                break
-                
-        print(f"[+] Successfully scraped {len(reviews)} reviews from Amazon.")
-        return reviews
-        
-    except Exception as e:
-        print(f"[-] Amazon Scraper Error: {e}")
-        return []
-
-def scrape_flipkart_reviews(page, product_name):
-    print(f"\n[*] Searching Flipkart for '{product_name}'...")
-    search_url = f"https://www.flipkart.com/search?q={product_name.replace(' ', '%20')}"
-    
-    try:
-        page.goto(search_url, timeout=60000)
-        time.sleep(3)
-        
-        product_link = page.locator("a[href*='/p/'][href*='pid=']").first
-        if not product_link.is_visible():
-            print("[-] Could not find the product on Flipkart.")
+        else:
+            print("[-] Could not find 'See all reviews' link. Product might not have enough reviews.")
             return []
-            
-        href = product_link.get_attribute('href')
-        product_url = "https://www.flipkart.com" + href
-        print(f"[*] Found Flipkart Product. Fetching reviews from: {product_url.split('?')[0]}")
         
-        page.goto(product_url, timeout=60000)
-        time.sleep(3)
-        
-        page.evaluate("window.scrollTo(0, document.body.scrollHeight/2)")
-        time.sleep(2)
-        page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
-        time.sleep(2)
-        
-        # Click "All reviews" link to get to dedicated review page
-        all_reviews_link = page.locator("a[href*='/product-reviews/']").first
-        if all_reviews_link.is_visible():
-            all_reviews_link.click()
-            time.sleep(4)
-        
-        reviews = []
-        # Scrape up to 5 pages
-        for p in range(5):
-            # Expand 'READ MORE' buttons
-            read_more_btns = page.locator("span:has-text('READ MORE')")
-            try:
-                count = read_more_btns.count()
-                for i in range(count):
-                    read_more_btns.nth(i).click(timeout=1000)
-            except Exception:
-                pass
+        # Scrape pages until we hit target
+        for p in range(20): # Up to 20 pages max
+            if len(reviews_data) >= target_count:
+                break
                 
-            # Both t-ZTKy and Zmyqqu are commonly used by Flipkart for reviews
-            review_elements = page.locator('div.t-ZTKy')
-            if review_elements.count() == 0:
-                review_elements = page.locator('div.Zmyqqu')
+            review_blocks = page.locator('div[data-hook="review"]')
+            count = review_blocks.count()
             
-            # Fallback: Sometimes they use a generic long string class. 
-            # We look for divs that have typical review length if the standard classes fail.
-            count = review_elements.count()
-            if count == 0:
-                generic_divs = page.locator('div')
-                for i in range(generic_divs.count()):
-                    try:
-                        text = generic_divs.nth(i).inner_text().strip()
-                        if len(text) > 60 and "READ MORE" in text:
-                            text = text.replace("READ MORE", "").strip()
-                            if text not in reviews:
-                                reviews.append(text)
-                    except: pass
-            else:
-                for i in range(count):
-                    text = review_elements.nth(i).inner_text().strip()
-                    text = text.replace("READ MORE", "").strip()
-                    if text and text not in reviews:
-                        reviews.append(text)
+            for i in range(count):
+                if len(reviews_data) >= target_count:
+                    break
                     
-            # Next page
-            next_btn = page.locator("a:has-text('NEXT')")
-            if next_btn.is_visible():
+                block = review_blocks.nth(i)
+                text_loc = block.locator('span[data-hook="review-body"]')
+                date_loc = block.locator('span[data-hook="review-date"]')
+                
+                if text_loc.is_visible() and date_loc.is_visible():
+                    text = text_loc.inner_text().strip()
+                    date_str = date_loc.inner_text().strip()
+                    
+                    # Example date_str: "Reviewed in India on 12 March 2024"
+                    location = "Unknown"
+                    date_val = "Unknown"
+                    match = re.search(r'Reviewed in (.*?) on (.*)', date_str)
+                    if match:
+                        location = match.group(1).strip()
+                        date_val = match.group(2).strip()
+                        
+                    # Skip empty or duplicate reviews
+                    if text and text not in [r["review"] for r in reviews_data]:
+                        reviews_data.append({
+                            "product": product_name,
+                            "review": text,
+                            "date": date_val,
+                            "location": location
+                        })
+            
+            print(f"[+] {product_name}: Collected {len(reviews_data)}/{target_count} reviews...")
+            
+            next_btn = page.locator('li.a-last a')
+            if next_btn.is_visible() and not 'a-disabled' in next_btn.evaluate("el => el.parentElement.className"):
                 next_btn.click()
                 time.sleep(3)
             else:
                 break
                 
-        print(f"[+] Successfully scraped {len(reviews)} reviews from Flipkart.")
-        return reviews
+        return reviews_data
         
     except Exception as e:
-        print(f"[-] Flipkart Scraper Error: {e}")
-        return []
+        print(f"[-] Scraper Error: {e}")
+        return reviews_data
 
 if __name__ == "__main__":
     print("==================================================")
-    print(" 🛒 Headless Browser Review Scraper (Playwright)  ")
+    print(" 🛒 Tech Product Review Multi-Scraper")
     print("==================================================")
     
-    product = input("Enter the product name to scrape (e.g., 'Macbook Air M2'): ").strip()
+    # 3 Distinct Tech Products
+    products_to_scrape = [
+        "Apple MacBook Air M2",
+        "Sony WH-1000XM5 Wireless Headphones",
+        "Samsung Galaxy S24 Ultra"
+    ]
     
-    if not product:
-        print("Product name cannot be empty.")
-        exit()
-        
-    print("\n[!] Launching invisible Chromium browser... This acts like a real human.")
+    all_reviews = []
+    
+    print("\n[!] Launching invisible Chromium browser...")
     with sync_playwright() as p:
-        # Launch Chromium headless
         browser = p.chromium.launch(headless=True)
-        # Use a realistic context to avoid bot detection
         context = browser.new_context(
             user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
             viewport={'width': 1920, 'height': 1080}
         )
         page = context.new_page()
         
-        # Try scraping
-        amazon_reviews = scrape_amazon_reviews(page, product)
-        flipkart_reviews = scrape_flipkart_reviews(page, product)
-        
+        for product in products_to_scrape:
+            data = scrape_amazon_tech(page, product, target_count=100)
+            all_reviews.extend(data)
+            
         browser.close()
     
-    all_reviews = {
-        "product": product,
-        "amazon_count": len(amazon_reviews),
-        "flipkart_count": len(flipkart_reviews),
-        "total_reviews": len(amazon_reviews) + len(flipkart_reviews),
-        "reviews": amazon_reviews + flipkart_reviews
-    }
-    
-    output_file = f"{product.replace(' ', '_').lower()}_reviews.json"
+    output_file = "tech_reviews.json"
     
     with open(output_file, 'w', encoding='utf-8') as f:
         json.dump(all_reviews, f, indent=4, ensure_ascii=False)
         
-    print(f"\n[🚀] Done! Saved all {all_reviews['total_reviews']} reviews to '{output_file}'.")
-    print("You can now pass this JSON file into your local AI analyzer model!")
+    print(f"\n[🚀] Done! Saved total {len(all_reviews)} reviews across {len(products_to_scrape)} products to '{output_file}'.")

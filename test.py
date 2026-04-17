@@ -8,41 +8,31 @@ URL = "http://localhost:8001/analyze_reviews"
 
 import os
 
-# Fetch 1000 real reviews from the HuggingFace 'amazon_polarity' dataset
-def get_1000_real_reviews():
-    file_path = "real_1000_reviews.json"
+# Load the actual tech reviews scraped by scraper.py
+def get_tech_reviews():
+    file_path = "tech_reviews.json"
     
-    # If we already downloaded them, just load them!
-    if os.path.exists(file_path):
-        with open(file_path, "r", encoding="utf-8") as f:
-            return json.load(f)
-            
-    print("🚀 First run: Downloading 1000 real Amazon reviews from the HuggingFace dataset hub...")
-    try:
-        from datasets import load_dataset
-    except ImportError:
-        print("[-] Please wait for 'pip install datasets' to finish in the background, then run this again!")
+    if not os.path.exists(file_path):
+        print("[-] 'tech_reviews.json' not found! Please run 'python scraper.py' first to scrape the 300 tech products.")
         exit()
         
-    # The amazon_polarity dataset contains millions of real Amazon product reviews
-    dataset = load_dataset("amazon_polarity", split="train", streaming=True)
+    with open(file_path, "r", encoding="utf-8") as f:
+        data = json.load(f)
+        
     reviews = []
-    
-    for item in dataset:
-        text = item["content"].strip()
-        # Filter for reviews that are a good length (not too short, not a giant essay)
-        if 80 < len(text) < 400:
-            reviews.append(text)
-        if len(reviews) >= 1000:
-            break
-            
-    # Save locally so we don't have to download it again
-    with open(file_path, "w", encoding="utf-8") as f:
-        json.dump(reviews, f, indent=4, ensure_ascii=False)
+    for item in data:
+        # We stringify the rich data so the AI can read it all at once
+        prod = item.get("product", "Unknown Product")
+        date = item.get("date", "Unknown Date")
+        loc = item.get("location", "Unknown Location")
+        text = item.get("review", "")
+        
+        rich_review = f"Product: {prod}\nDate: {date}\nLocation: {loc}\nReview: {text}"
+        reviews.append(rich_review)
         
     return reviews
 
-reviews = get_1000_real_reviews()
+reviews = get_tech_reviews()
 
 print(f"Total reviews queued for AI parsing: {len(reviews)}")
 
@@ -157,7 +147,35 @@ final_output = {
 
 for idx, data in results:
     if data:
-        final_output["reviews"].extend(data.get("reviews_analysis", []))
+        for r in data.get("reviews_analysis", []):
+            orig = r.get("original_review", "")
+            
+            # Parse out the structured data we injected earlier
+            product_name = "Unknown"
+            date_val = "Unknown"
+            loc = "Unknown"
+            clean_review = orig
+            
+            if "Product: " in orig and "Review: " in orig:
+                try:
+                    parts = orig.split("\n")
+                    product_name = parts[0].replace("Product: ", "")
+                    date_val = parts[1].replace("Date: ", "")
+                    loc = parts[2].replace("Location: ", "")
+                    clean_review = orig.split("Review: ")[1]
+                except Exception:
+                    pass
+            
+            structured_review = {
+                "product": product_name,
+                "date": date_val,
+                "location": loc,
+                "review_text": clean_review,
+                "emotion": r.get("emotion", "Unknown"),
+                "confidence_score": r.get("confidence_score", 0.0),
+                "aspects": r.get("aspects", [])
+            }
+            final_output["reviews"].append(structured_review)
 
 final_output["total_analyzed"] = len(final_output["reviews"])
 
