@@ -6,6 +6,10 @@ from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from transformers import pipeline
 import torch
+import nltk
+from nltk.corpus import stopwords
+from nltk.tokenize import word_tokenize
+from nltk.stem import WordNetLemmatizer
 
 app = FastAPI(title="Local Review Analyzer API")
 
@@ -19,7 +23,9 @@ class Aspect(BaseModel):
 
 class ReviewAnalysis(BaseModel):
     id: int
+    original_review: str
     emotion: str
+    confidence_score: float
     aspects: List[Aspect]
 
 class AnalysisResponse(BaseModel):
@@ -55,14 +61,42 @@ def analyze_reviews(request: ReviewRequest):
 
     return run_local_llm_analysis(request.reviews)
 
+# Initialize NLTK components for preprocessing
+try:
+    stop_words = set(stopwords.words('english'))
+    lemmatizer = WordNetLemmatizer()
+except LookupError:
+    # Fallback in case downloads didn't complete
+    nltk.download('punkt')
+    nltk.download('wordnet')
+    nltk.download('stopwords')
+    stop_words = set(stopwords.words('english'))
+    lemmatizer = WordNetLemmatizer()
+
+def preprocess_text(text: str) -> str:
+    # 1. Text Cleaning: Lowercasing and removing punctuation
+    text = re.sub(r'[^\w\s]', '', text.lower())
+    # 2. Tokenization
+    tokens = word_tokenize(text)
+    # 3. Stopword Removal & 4. Lemmatization
+    processed_tokens = [lemmatizer.lemmatize(word) for word in tokens if word not in stop_words]
+    return " ".join(processed_tokens)
+
 def run_local_llm_analysis(reviews: List[str]) -> AnalysisResponse:
+    # We apply the preprocessing layer here for any traditional NLP uses, 
+    # but for the LLM itself, we MUST feed it the raw original text!
+    preprocessed_reviews = [preprocess_text(r) for r in reviews]
     reviews_text = "\n".join([f"Review {i+1}: {r}" for i, r in enumerate(reviews)])
     
     prompt = f"""
 Analyze the following list of customer reviews.
+CRITICAL INSTRUCTION: Pay EXTREMELY close attention to SARCASM. 
+Sarcastic reviews often use positive words (like "perfect", "brilliant", "love", "wow") in a mocking tone to describe negative contexts or product defects (e.g., "Wow, I just *love* having to hold my laptop at a 45 degree angle"). 
+If a review is sarcastic, its true emotion and sentiment are strongly NEGATIVE!
 
 For EACH review, extract:
 - The overall emotion (Positive, Negative, or Neutral)
+- The confidence score (0.0 to 1.0) of the emotion prediction
 - Specific aspects or features mentioned, along with the sentiment for that feature (e.g., feature: "battery life", sentiment: "Negative")
 
 Finally, provide a 'global_summary' paragraph that summarizes the overarching issues.
@@ -73,6 +107,7 @@ Return strictly as a JSON object matching this schema:
     {{
       "id": 1,
       "emotion": "Emotion here",
+      "confidence_score": 0.95,
       "aspects": [
         {{"feature": "Feature 1", "sentiment": "Sentiment 1"}}
       ]
@@ -102,6 +137,18 @@ Reviews:
             json_str = output[output.find('{'):output.rfind('}')+1]
             
         data = json.loads(json_str)
+        
+        # Inject original review text back into the response (since LLM only saw preprocessed text)
+        for r in data.get("reviews_analysis", []):
+            try:
+                idx = int(r.get("id", 1)) - 1
+                if 0 <= idx < len(reviews):
+                    r["original_review"] = reviews[idx]
+                else:
+                    r["original_review"] = "N/A"
+            except Exception:
+                r["original_review"] = "N/A"
+
         return AnalysisResponse(**data)
     except Exception as e:
         print(f"Error: {e}\nRaw Output: {output if 'output' in locals() else 'None'}")

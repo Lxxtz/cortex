@@ -40,16 +40,32 @@ for i in range(0, len(reviews), batch_size):
         response.raise_for_status()
         data = response.json()
         
-        print(f"\n--- BATCH {i//batch_size + 1} GLOBAL SUMMARY ---")
-        print(data.get("global_summary"))
-        print("\n--- BATCH REVIEW BREAKDOWN ---")
+        print(f"\n\033[1;36m{'='*60}\033[0m")
+        print(f"\033[1;36m🌟 BATCH {i//batch_size + 1} GLOBAL SUMMARY 🌟\033[0m")
+        print(f"\033[1;36m{'='*60}\033[0m")
+        print(f"\033[3m{data.get('global_summary')}\033[0m")
+        print(f"\n\033[1;35m{'='*60}\033[0m")
+        print(f"\033[1;35m📋 BATCH REVIEW BREAKDOWN 📋\033[0m")
+        print(f"\033[1;35m{'='*60}\033[0m\n")
         
-        for r in data.get("reviews_analysis", []):
-            print(f"Emotion: {r.get('emotion')}")
-            print("Aspects:")
+        for idx, r in enumerate(data.get("reviews_analysis", [])):
+            original_rev = r.get('original_review', batch[idx] if idx < len(batch) else "N/A")
+            emotion = r.get('emotion', 'Unknown')
+            conf = r.get('confidence_score', 'N/A')
+            
+            # Using ANSI colors for beautification
+            color = "\033[92m" if "positive" in str(emotion).lower() else "\033[91m" if "negative" in str(emotion).lower() else "\033[93m"
+            reset = "\033[0m"
+            
+            print(f"📝 \033[1mReview {r.get('id', idx+1)}\033[0m: \"{original_rev}\"")
+            print(f"📊 \033[1mEmotion\033[0m: {color}{emotion}{reset} | \033[1mConfidence\033[0m: \033[1;33m{conf}{reset}")
+            print("🔍 \033[1mAspects\033[0m:")
             for aspect in r.get("aspects", []):
-                # Print to terminal exactly like before
-                print(f"  - {aspect.get('feature')}: {aspect.get('sentiment')}")
+                # Print to terminal beautifully
+                feature = aspect.get('feature')
+                raw_sentiment = aspect.get('sentiment', '')
+                asp_color = "\033[92m" if "positive" in str(raw_sentiment).lower() else "\033[91m" if "negative" in str(raw_sentiment).lower() else "\033[93m"
+                print(f"   • {feature}: {asp_color}{raw_sentiment}{reset}")
                 
                 # Standardize the output string so variations group together properly for the graph
                 sentiment = aspect.get("sentiment", "").lower().strip()
@@ -66,6 +82,7 @@ for i in range(0, len(reviews), batch_size):
                     if "delivery" in feature: feature = "delivery"
 
                     negative_aspects.append(feature)
+            print("\033[90m" + "-" * 60 + "\033[0m")
     except Exception as e:
         print(f"Batch failed: {e}")
 
