@@ -1,0 +1,352 @@
+[
+    {
+        "product": "Dyson Airwrap",
+        "issue_cluster": "Usability/Maintenance",
+        "frequency": 29,
+        "severity": 3,
+        "avg_intensity": 0.87,
+        "impact_score": 75.81,
+        "estimated_cost": 145.0,
+        "roi_score": 0.5228
+    },
+    {
+        "product": "Breville Barista Express",
+        "issue_cluster": "Usability/Maintenance",
+        "frequency": 30,
+        "severity": 3,
+        "avg_intensity": 0.85,
+        "impact_score": 76.89,
+        "estimated_cost": 150.0,
+        "roi_score": 0.5126
+    },
+    {
+        "product": "Tesla Model Y",
+        "issue_cluster": "Software/Connectivity",
+        "frequency": 33,
+        "severity": 6,
+        "avg_intensity": 0.88,
+        "impact_score": 174.42,
+        "estimated_cost": 495.0,
+        "roi_score": 0.3524
+    },
+    {
+        "product": "Apple iPad Pro M4",
+        "issue_cluster": "Software/Connectivity",
+        "frequency": 54,
+        "severity": 6,
+        "avg_intensity": 0.87,
+        "impact_score": 282.9,
+        "estimated_cost": 810.0,
+        "roi_score": 0.3493
+    },
+    {
+        "product": "Litter-Robot 4",
+        "issue_cluster": "Software/Connectivity",
+        "frequency": 20,
+        "severity": 6,
+        "avg_intensity": 0.83,
+        "impact_score": 99.48,
+        "estimated_cost": 300.0,
+        "roi_score": 0.3316
+    },
+    {
+        "product": "Nike Air Zoom Pegasus 40",
+        "issue_cluster": "Ergonomics",
+        "frequency": 93,
+        "severity": 5,
+        "avg_intensity": 0.87,
+        "impact_score": 404.8,
+        "estimated_cost": 1860.0,
+        "roi_score": 0.2176
+    },
+    {
+        "product": "Herman Miller Aeron Chair",
+        "issue_cluster": "Ergonomics",
+        "frequency": 79,
+        "severity": 5,
+        "avg_intensity": 0.87,
+        "impact_score": 343.05,
+        "estimated_cost": 1580.0,
+        "roi_score": 0.2171
+    },
+    {
+        "product": "Litter-Robot 4",
+        "issue_cluster": "Ergonomics",
+        "frequency": 30,
+        "severity": 5,
+        "avg_intensity": 0.86,
+        "impact_score": 128.95,
+        "estimated_cost": 600.0,
+        "roi_score": 0.2149
+    },
+    {
+        "product": "Sony WH-1000XM5 Headphones",
+        "issue_cluster": "Ergonomics",
+        "frequency": 35,
+        "severity": 5,
+        "avg_intensity": 0.86,
+        "impact_score": 150.2,
+        "estimated_cost": 700.0,
+        "roi_score": 0.2146
+    },
+    {
+        "product": "Dyson V15 Detect Vacuum",
+        "issue_cluster": "Ergonomics",
+        "frequency": 27,
+        "severity": 5,
+        "avg_intensity": 0.85,
+        "impact_score": 115.0,
+        "estimated_cost": 540.0,
+        "roi_score": 0.213
+    },
+    {
+        "product": "PlayStation 5 Pro",
+        "issue_cluster": "Input",
+        "frequency": 29,
+        "severity": 6,
+        "avg_intensity": 0.9,
+        "impact_score": 155.94,
+        "estimated_cost": 870.0,
+        "roi_score": 0.1792
+    },
+    {
+        "product": "Sony WH-1000XM5 Headphones",
+        "issue_cluster": "Audio",
+        "frequency": 85,
+        "severity": 6,
+        "avg_intensity": 0.87,
+        "impact_score": 446.22,
+        "estimated_cost": 3400.0,
+        "roi_score": 0.1312
+    },
+    {
+        "product": "Apple iPad Pro M4",
+        "issue_cluster": "Build/Design",
+        "frequency": 25,
+        "severity": 7,
+        "avg_intensity": 0.89,
+        "impact_score": 156.1,
+        "estimated_cost": 1500.0,
+        "roi_score": 0.1041
+    },
+    {
+        "product": "Sony WH-1000XM5 Headphones",
+        "issue_cluster": "Build/Design",
+        "frequency": 30,
+        "severity": 7,
+        "avg_intensity": 0.88,
+        "impact_score": 184.59,
+        "estimated_cost": 1800.0,
+        "roi_score": 0.1026
+    },
+    {
+        "product": "Tesla Model Y",
+        "issue_cluster": "Build/Design",
+        "frequency": 31,
+        "severity": 7,
+        "avg_intensity": 0.88,
+        "impact_score": 190.19,
+        "estimated_cost": 1860.0,
+        "roi_score": 0.1023
+    },
+    {
+        "product": "Nike Air Zoom Pegasus 40",
+        "issue_cluster": "Build/Design",
+        "frequency": 58,
+        "severity": 7,
+        "avg_intensity": 0.87,
+        "impact_score": 354.55,
+        "estimated_cost": 3480.0,
+        "roi_score": 0.1019
+    },
+    {
+        "product": "Herman Miller Aeron Chair",
+        "issue_cluster": "Build/Design",
+        "frequency": 24,
+        "severity": 7,
+        "avg_intensity": 0.84,
+        "impact_score": 141.61,
+        "estimated_cost": 1440.0,
+        "roi_score": 0.0983
+    },
+    {
+        "product": "Breville Barista Express",
+        "issue_cluster": "Performance",
+        "frequency": 74,
+        "severity": 8,
+        "avg_intensity": 0.88,
+        "impact_score": 521.6,
+        "estimated_cost": 5920.0,
+        "roi_score": 0.0881
+    },
+    {
+        "product": "Dyson Airwrap",
+        "issue_cluster": "Performance",
+        "frequency": 34,
+        "severity": 8,
+        "avg_intensity": 0.88,
+        "impact_score": 239.76,
+        "estimated_cost": 2720.0,
+        "roi_score": 0.0881
+    },
+    {
+        "product": "Litter-Robot 4",
+        "issue_cluster": "Performance",
+        "frequency": 59,
+        "severity": 8,
+        "avg_intensity": 0.87,
+        "impact_score": 412.64,
+        "estimated_cost": 4720.0,
+        "roi_score": 0.0874
+    },
+    {
+        "product": "PlayStation 5 Pro",
+        "issue_cluster": "Performance",
+        "frequency": 28,
+        "severity": 8,
+        "avg_intensity": 0.86,
+        "impact_score": 192.96,
+        "estimated_cost": 2240.0,
+        "roi_score": 0.0861
+    },
+    {
+        "product": "Dyson V15 Detect Vacuum",
+        "issue_cluster": "Performance",
+        "frequency": 30,
+        "severity": 8,
+        "avg_intensity": 0.86,
+        "impact_score": 206.08,
+        "estimated_cost": 2400.0,
+        "roi_score": 0.0859
+    },
+    {
+        "product": "Tesla Model Y",
+        "issue_cluster": "Hardware",
+        "frequency": 31,
+        "severity": 7,
+        "avg_intensity": 0.89,
+        "impact_score": 192.57,
+        "estimated_cost": 3100.0,
+        "roi_score": 0.0621
+    },
+    {
+        "product": "Breville Barista Express",
+        "issue_cluster": "Hardware",
+        "frequency": 27,
+        "severity": 7,
+        "avg_intensity": 0.88,
+        "impact_score": 167.23,
+        "estimated_cost": 2700.0,
+        "roi_score": 0.0619
+    },
+    {
+        "product": "Dyson V15 Detect Vacuum",
+        "issue_cluster": "Hardware",
+        "frequency": 25,
+        "severity": 7,
+        "avg_intensity": 0.87,
+        "impact_score": 152.39,
+        "estimated_cost": 2500.0,
+        "roi_score": 0.061
+    },
+    {
+        "product": "Litter-Robot 4",
+        "issue_cluster": "Hardware",
+        "frequency": 33,
+        "severity": 7,
+        "avg_intensity": 0.86,
+        "impact_score": 199.01,
+        "estimated_cost": 3300.0,
+        "roi_score": 0.0603
+    },
+    {
+        "product": "Dyson Airwrap",
+        "issue_cluster": "Hardware",
+        "frequency": 30,
+        "severity": 7,
+        "avg_intensity": 0.86,
+        "impact_score": 180.74,
+        "estimated_cost": 3000.0,
+        "roi_score": 0.0602
+    },
+    {
+        "product": "PlayStation 5 Pro",
+        "issue_cluster": "Hardware",
+        "frequency": 25,
+        "severity": 7,
+        "avg_intensity": 0.86,
+        "impact_score": 149.66,
+        "estimated_cost": 2500.0,
+        "roi_score": 0.0599
+    },
+    {
+        "product": "Tesla Model Y",
+        "issue_cluster": "Battery",
+        "frequency": 24,
+        "severity": 9,
+        "avg_intensity": 0.89,
+        "impact_score": 192.15,
+        "estimated_cost": 3480.0,
+        "roi_score": 0.0552
+    },
+    {
+        "product": "Apple iPad Pro M4",
+        "issue_cluster": "Battery",
+        "frequency": 35,
+        "severity": 9,
+        "avg_intensity": 0.87,
+        "impact_score": 274.77,
+        "estimated_cost": 5075.0,
+        "roi_score": 0.0541
+    },
+    {
+        "product": "Tesla Model Y",
+        "issue_cluster": "Display",
+        "frequency": 24,
+        "severity": 9,
+        "avg_intensity": 0.88,
+        "impact_score": 189.99,
+        "estimated_cost": 3600.0,
+        "roi_score": 0.0528
+    },
+    {
+        "product": "Dyson V15 Detect Vacuum",
+        "issue_cluster": "Battery",
+        "frequency": 29,
+        "severity": 9,
+        "avg_intensity": 0.84,
+        "impact_score": 220.41,
+        "estimated_cost": 4205.0,
+        "roi_score": 0.0524
+    },
+    {
+        "product": "PlayStation 5 Pro",
+        "issue_cluster": "Display",
+        "frequency": 27,
+        "severity": 9,
+        "avg_intensity": 0.87,
+        "impact_score": 211.68,
+        "estimated_cost": 4050.0,
+        "roi_score": 0.0523
+    },
+    {
+        "product": "Apple iPad Pro M4",
+        "issue_cluster": "Display",
+        "frequency": 34,
+        "severity": 9,
+        "avg_intensity": 0.87,
+        "impact_score": 266.4,
+        "estimated_cost": 5100.0,
+        "roi_score": 0.0522
+    },
+    {
+        "product": "Dyson Airwrap",
+        "issue_cluster": "Safety",
+        "frequency": 31,
+        "severity": 10,
+        "avg_intensity": 0.89,
+        "impact_score": 276.0,
+        "estimated_cost": 15500.0,
+        "roi_score": 0.0178
+    }
+]

@@ -3,6 +3,7 @@ import json
 import re
 from typing import List, Optional
 from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import nltk
 from openai import OpenAI
@@ -18,6 +19,14 @@ from dotenv import load_dotenv
 load_dotenv()
 
 app = FastAPI(title="Local Review Analyzer API")
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # Define models
 class ReviewRequest(BaseModel):
@@ -119,7 +128,7 @@ def run_local_llm_analysis(reviews: List[str]) -> AnalysisResponse:
             # Threshold for semantic match: 0.95 means almost identical meaning
             if sims[best_idx] > 0.95:
                 matched = True
-                print(f"✅ RAG CACHE HIT (Sim: {sims[best_idx]:.3f}) -> Skipping LLM for: {rev[:40]}...")
+                print(f"[CACHE HIT] (Sim: {sims[best_idx]:.3f}) -> Skipping LLM for: {rev[:40]}...")
                 
                 cached_analysis = semantic_cache[best_idx]['analysis'].copy()
                 cached_analysis['id'] = i + 1
@@ -179,7 +188,7 @@ Reviews:
             response = client.chat.completions.create(
                 model="qwen/qwen-2.5-72b-instruct",
                 messages=messages,
-                max_tokens=1024,
+                max_tokens=4096,
                 temperature=0.1
             )
             output = response.choices[0].message.content
@@ -187,7 +196,7 @@ Reviews:
             if not output:
                 # OpenRouter free tier often returns None when overwhelmed or rate limited.
                 # Provide a safe fallback instead of crashing the server.
-                print("⚠️ OpenRouter returned empty content. You might be rate-limited!")
+                print("[WARNING] OpenRouter returned empty content. You might be rate-limited!")
                 output = '```json\n{"global_summary": "Batch skipped due to API rate limit / empty response.", "reviews_analysis": []}\n```'
                 
             json_match = re.search(r'```(?:json)?\n(.*?)\n```', output, re.DOTALL)

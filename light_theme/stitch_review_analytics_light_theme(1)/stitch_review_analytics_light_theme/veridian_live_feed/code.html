@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Veridian Insight | Live Review Feed</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "secondary-fixed": "#e1e2e4",
+                      "inverse-primary": "#4edea3",
+                      "tertiary-container": "#fc7c78",
+                      "surface-container-high": "#e3eae3",
+                      "on-tertiary-container": "#711419",
+                      "on-secondary-fixed": "#191c1e",
+                      "tertiary-fixed": "#ffdad7",
+                      "primary-fixed": "#6ffbbe",
+                      "surface": "#f4fbf4",
+                      "on-tertiary": "#ffffff",
+                      "tertiary-fixed-dim": "#ffb3af",
+                      "secondary-fixed-dim": "#c5c6c8",
+                      "on-primary-fixed-variant": "#005236",
+                      "on-error-container": "#93000a",
+                      "surface-container": "#e8f0e9",
+                      "on-surface-variant": "#3c4a42",
+                      "surface-container-low": "#eef6ee",
+                      "secondary": "#5c5f60",
+                      "on-secondary-container": "#606365",
+                      "surface-container-highest": "#dde4dd",
+                      "secondary-container": "#dee0e2",
+                      "on-error": "#ffffff",
+                      "surface-bright": "#f4fbf4",
+                      "on-secondary": "#ffffff",
+                      "surface-tint": "#006c49",
+                      "on-secondary-fixed-variant": "#444749",
+                      "on-primary-container": "#00422b",
+                      "on-primary-fixed": "#002113",
+                      "primary": "#006c49",
+                      "on-tertiary-fixed-variant": "#842225",
+                      "on-surface": "#161d19",
+                      "primary-container": "#10b981",
+                      "surface-container-lowest": "#ffffff",
+                      "tertiary": "#a43a3a",
+                      "primary-fixed-dim": "#4edea3",
+                      "surface-dim": "#d4dcd5",
+                      "on-tertiary-fixed": "#410005",
+                      "outline-variant": "#bbcabf",
+                      "error-container": "#ffdad6",
+                      "background": "#f4fbf4",
+                      "on-primary": "#ffffff",
+                      "surface-variant": "#dde4dd",
+                      "outline": "#6c7a71",
+                      "on-background": "#161d19",
+                      "inverse-on-surface": "#ebf3eb",
+                      "error": "#ba1a1a",
+                      "inverse-surface": "#2b322d"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "fontFamily": {
+                      "headline": ["Manrope"],
+                      "body": ["Inter"],
+                      "label": ["Inter"]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .glass-nav {
+            background: rgba(244, 251, 244, 0.8);
+            backdrop-filter: blur(24px);
+        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, .brand { font-family: 'Manrope', sans-serif; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface min-h-screen">
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 glass-nav flex justify-between items-center px-8 h-16 w-full shadow-[0_8px_32px_rgba(22,29,25,0.06)]">
+<div class="flex items-center gap-8">
+<span class="text-xl font-bold tracking-tighter text-[#006c49] dark:text-[#10b981]">Veridian Insight</span>
+<nav class="hidden md:flex gap-6 font-['Manrope'] text-sm tracking-tight">
+<a class="text-[#3c4a42] hover:text-[#006c49] transition-colors" href="#">Research</a>
+<a class="text-[#006c49] font-semibold border-b-2 border-[#006c49] pb-1" href="#">Trends</a>
+<a class="text-[#3c4a42] hover:text-[#006c49] transition-colors" href="#">Reporting</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative hidden sm:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-sm">search</span>
+<input class="bg-surface-container-highest border-none rounded-xl pl-10 pr-4 py-2 text-xs focus:ring-2 focus:ring-primary/30 w-64" placeholder="Search insights..." type="text"/>
+</div>
+<button class="material-symbols-outlined text-on-surface-variant p-2 hover:bg-[#eef6ee]/50 rounded-full">notifications</button>
+<button class="material-symbols-outlined text-on-surface-variant p-2 hover:bg-[#eef6ee]/50 rounded-full">account_circle</button>
+<button class="bg-gradient-to-br from-primary to-primary-container text-on-primary px-5 py-2 rounded-xl text-sm font-semibold shadow-sm ml-2">Get Started</button>
+</div>
+</header>
+<div class="flex pt-16">
+<!-- SideNavBar -->
+<aside class="h-screen w-64 fixed left-0 top-0 pt-20 bg-[#eef6ee] dark:bg-[#1a231f] flex flex-col border-r border-[#bbcabf]/15">
+<div class="px-6 mb-8">
+<div class="flex items-center gap-3">
+<img alt="Analyst Profile" class="w-10 h-10 rounded-full bg-surface-container-lowest p-1" data-alt="professional portrait of a data analyst in a minimalist office setting, soft natural lighting, high-end corporate style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLnRn2vxXLPgJN-JDLucieF--PIzK-5FiwiQVlLYHhPQPU8kPwp2EV6fRUqVtNFKHGQD1CJ3XTdoq7PsdtJ5rmtYb6aGQ1kVRuxBGkHLWed5wm4xpDh63QpPIXt7Zyyftp5LZzZuwaJB6HwUDXf0IFl7a6aZ7P7s4PrIqZy9uOTihz0TmsiNp49xK5uKBig7gcSm3mnwlHf7cp4R68Vrc-opC7JI2CaIecvXjiwpr9YiBOc_fxzh_7u7pTbKGJXy_rED82kbyW5YES"/>
+<div>
+<p class="font-headline text-sm font-bold text-on-surface">Editorial Intel</p>
+<p class="text-[10px] text-on-surface-variant font-medium">The Lucid Analyst</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 space-y-1 font-['Inter'] text-sm font-medium">
+<a class="flex items-center gap-3 text-[#3c4a42] px-8 py-3 hover:translate-x-1 transition-transform duration-300" href="#">
+<span class="material-symbols-outlined">dashboard</span> Dashboard
+                </a>
+<a class="flex items-center gap-3 bg-white text-[#006c49] rounded-l-full ml-4 pl-4 py-3 shadow-sm transition-all duration-300" href="#">
+<span class="material-symbols-outlined">analytics</span> Sentiment Feed
+                </a>
+<a class="flex items-center gap-3 text-[#3c4a42] px-8 py-3 hover:translate-x-1 transition-transform duration-300" href="#">
+<span class="material-symbols-outlined">group_work</span> Competitors
+                </a>
+<a class="flex items-center gap-3 text-[#3c4a42] px-8 py-3 hover:translate-x-1 transition-transform duration-300" href="#">
+<span class="material-symbols-outlined">face</span> Audience
+                </a>
+<a class="flex items-center gap-3 text-[#3c4a42] px-8 py-3 hover:translate-x-1 transition-transform duration-300" href="#">
+<span class="material-symbols-outlined">settings</span> Settings
+                </a>
+</nav>
+<div class="p-6">
+<button class="w-full bg-surface-container-lowest text-primary border-none py-3 rounded-xl text-sm font-bold shadow-sm hover:bg-white transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-lg">add</span> New Analysis
+                </button>
+</div>
+<footer class="mt-auto pb-8 space-y-1 font-['Inter'] text-xs font-medium">
+<a class="flex items-center gap-3 text-[#3c4a42] px-8 py-2 opacity-70 hover:opacity-100" href="#">
+<span class="material-symbols-outlined text-sm">menu_book</span> Documentation
+                </a>
+<a class="flex items-center gap-3 text-[#3c4a42] px-8 py-2 opacity-70 hover:opacity-100" href="#">
+<span class="material-symbols-outlined text-sm">contact_support</span> Support
+                </a>
+</footer>
+</aside>
+<!-- Main Content Canvas -->
+<main class="ml-64 w-full p-8 bg-surface">
+<!-- Header Section -->
+<div class="mb-10 flex justify-between items-end">
+<div>
+<h1 class="text-4xl font-extrabold tracking-tight text-on-surface mb-2">Sentiment Intelligence</h1>
+<p class="text-on-surface-variant font-medium">Live monitoring of incoming product narratives across global channels.</p>
+</div>
+<div class="flex gap-3">
+<div class="flex items-center bg-surface-container-low rounded-full px-4 py-2 gap-2 text-xs font-semibold text-primary">
+<span class="w-2 h-2 bg-primary rounded-full animate-pulse"></span>
+                        LIVE FEED ACTIVE
+                    </div>
+</div>
+</div>
+<!-- Bento Layout / Metric Row -->
+<div class="grid grid-cols-12 gap-6 mb-8">
+<div class="col-span-8 grid grid-cols-3 gap-6">
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-[0_8px_32px_rgba(22,29,25,0.04)]">
+<p class="text-xs font-bold text-on-surface-variant tracking-wider mb-2">POSITIVE RATIO</p>
+<p class="text-3xl font-extrabold text-primary">84.2%</p>
+<div class="mt-4 h-1 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary" style="width: 84%;"></div>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-[0_8px_32px_rgba(22,29,25,0.04)]">
+<p class="text-xs font-bold text-on-surface-variant tracking-wider mb-2">AVG CONFIDENCE</p>
+<p class="text-3xl font-extrabold text-on-surface">92.7%</p>
+<p class="text-[10px] text-on-surface-variant mt-2 font-medium">↑ 2.4% from yesterday</p>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-[0_8px_32px_rgba(22,29,25,0.04)]">
+<p class="text-xs font-bold text-on-surface-variant tracking-wider mb-2">TOTAL REVIEWS</p>
+<p class="text-3xl font-extrabold text-on-surface">12.4k</p>
+<p class="text-[10px] text-on-surface-variant mt-2 font-medium">Last 24 hours</p>
+</div>
+</div>
+<div class="col-span-4 bg-primary rounded-xl p-6 text-on-primary flex flex-col justify-between overflow-hidden relative">
+<div class="relative z-10">
+<h3 class="font-bold text-lg leading-tight mb-2">Narrative Shift Detected</h3>
+<p class="text-xs opacity-90 leading-relaxed">Trending topics around "Battery Life" have moved from neutral to highly positive in the last 2 hours.</p>
+</div>
+<button class="relative z-10 bg-white/20 hover:bg-white/30 backdrop-blur-sm text-xs font-bold py-2 px-4 rounded-lg w-max mt-4">View Report</button>
+<!-- Decorative Element -->
+<div class="absolute -bottom-10 -right-10 w-40 h-40 bg-primary-container/20 rounded-full blur-3xl"></div>
+</div>
+</div>
+<!-- Review Feed Grid (Asymmetric) -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Card 1: Positive -->
+<article class="bg-surface-container-lowest p-6 rounded-xl shadow-[0_8px_32px_rgba(22,29,25,0.04)] flex flex-col h-full border border-transparent hover:border-outline-variant/15 transition-all">
+<div class="flex justify-between items-start mb-6">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center font-bold text-primary">EJ</div>
+<div>
+<h4 class="text-sm font-bold text-on-surface">Elena J.</h4>
+<p class="text-[10px] text-on-surface-variant">2 mins ago • Amazon</p>
+</div>
+</div>
+<span class="bg-primary-container text-on-primary-container px-3 py-1 rounded-full text-[10px] font-bold">Positive</span>
+</div>
+<p class="text-sm leading-relaxed text-on-surface flex-1">
+                        "The integration is seamless. I was skeptical about the AI accuracy but it managed to categorize our complex dataset without any manual intervention. Saved us hours of work."
+                    </p>
+<div class="mt-6 pt-6 border-t border-surface-container-low">
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 bg-primary-fixed rounded-full" style="box-shadow: 0 0 8px #6ffbbe"></span>
+<span class="text-[10px] font-bold text-on-surface-variant">AI Confidence: 98%</span>
+</div>
+<span class="material-symbols-outlined text-sm text-on-surface-variant hover:text-primary cursor-pointer">share</span>
+</div>
+<div class="flex flex-wrap gap-2">
+<span class="text-[10px] bg-surface-container-low text-on-surface-variant px-2 py-1 rounded-md font-medium">#Integration</span>
+<span class="text-[10px] bg-surface-container-low text-on-surface-variant px-2 py-1 rounded-md font-medium">#Efficiency</span>
+<span class="text-[10px] bg-surface-container-low text-on-surface-variant px-2 py-1 rounded-md font-medium">#Accuracy</span>
+</div>
+</div>
+</article>
+<!-- Card 2: Neutral -->
+<article class="bg-surface-container-lowest p-6 rounded-xl shadow-[0_8px_32px_rgba(22,29,25,0.04)] flex flex-col h-full border border-transparent hover:border-outline-variant/15 transition-all">
+<div class="flex justify-between items-start mb-6">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center font-bold text-on-surface-variant">RT</div>
+<div>
+<h4 class="text-sm font-bold text-on-surface">Robert T.</h4>
+<p class="text-[10px] text-on-surface-variant">15 mins ago • Trustpilot</p>
+</div>
+</div>
+<span class="bg-surface-container-highest text-on-surface-variant px-3 py-1 rounded-full text-[10px] font-bold">Neutral</span>
+</div>
+<p class="text-sm leading-relaxed text-on-surface flex-1">
+                        "Solid performance overall, though the UI feels a bit dense on mobile. It does exactly what it says on the box, but there's a learning curve for new users."
+                    </p>
+<div class="mt-6 pt-6 border-t border-surface-container-low">
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 bg-primary-fixed rounded-full"></span>
+<span class="text-[10px] font-bold text-on-surface-variant">AI Confidence: 82%</span>
+</div>
+<span class="material-symbols-outlined text-sm text-on-surface-variant hover:text-primary cursor-pointer">share</span>
+</div>
+<div class="flex flex-wrap gap-2">
+<span class="text-[10px] bg-surface-container-low text-on-surface-variant px-2 py-1 rounded-md font-medium">#UI/UX</span>
+<span class="text-[10px] bg-surface-container-low text-on-surface-variant px-2 py-1 rounded-md font-medium">#LearningCurve</span>
+</div>
+</div>
+</article>
+<!-- Card 3: Negative -->
+<article class="bg-surface-container-lowest p-6 rounded-xl shadow-[0_8px_32px_rgba(22,29,25,0.04)] flex flex-col h-full border border-transparent hover:border-outline-variant/15 transition-all">
+<div class="flex justify-between items-start mb-6">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center font-bold text-tertiary">MK</div>
+<div>
+<h4 class="text-sm font-bold text-on-surface">Mark K.</h4>
+<p class="text-[10px] text-on-surface-variant">42 mins ago • G2</p>
+</div>
+</div>
+<span class="bg-tertiary-container text-on-tertiary-container px-3 py-1 rounded-full text-[10px] font-bold">Negative</span>
+</div>
+<p class="text-sm leading-relaxed text-on-surface flex-1">
+                        "Encountered multiple sync errors when connecting to our legacy CRM. Support was helpful but it took three days to resolve a critical blocking issue."
+                    </p>
+<div class="mt-6 pt-6 border-t border-surface-container-low">
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 bg-tertiary-container rounded-full"></span>
+<span class="text-[10px] font-bold text-on-surface-variant">AI Confidence: 94%</span>
+</div>
+<span class="material-symbols-outlined text-sm text-on-surface-variant hover:text-primary cursor-pointer">share</span>
+</div>
+<div class="flex flex-wrap gap-2">
+<span class="text-[10px] bg-surface-container-low text-on-surface-variant px-2 py-1 rounded-md font-medium">#SyncError</span>
+<span class="text-[10px] bg-surface-container-low text-on-surface-variant px-2 py-1 rounded-md font-medium">#CustomerSupport</span>
+</div>
+</div>
+</article>
+<!-- Card 4: High Density Insight -->
+<article class="bg-surface-container-lowest p-6 rounded-xl shadow-[0_8px_32px_rgba(22,29,25,0.04)] flex flex-col h-full border border-transparent hover:border-outline-variant/15 transition-all md:col-span-2">
+<div class="flex justify-between items-center mb-6">
+<div class="flex gap-4">
+<span class="text-xs font-bold bg-primary/5 text-primary px-3 py-1 rounded-lg">Product Review</span>
+<span class="text-xs font-bold text-on-surface-variant opacity-60">ID: #VRD-9210</span>
+</div>
+<div class="flex items-center gap-2 text-[10px] font-bold text-on-surface-variant uppercase tracking-widest">
+                            Verified Purchase <span class="material-symbols-outlined text-sm text-primary" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div>
+<h4 class="text-lg font-bold mb-3">"Actually life changing for our editorial team."</h4>
+<p class="text-sm leading-relaxed text-on-surface-variant mb-4">
+                                The sentiment analysis tool has allowed us to pivot our content strategy in real-time. We've seen a 40% increase in reader engagement since we started following the AI trends. It's not just a dashboard, it's a compass.
+                            </p>
+<div class="flex items-center gap-4 text-xs font-medium text-on-surface-variant">
+<span>Sarah Jenkins</span>
+<span class="w-1 h-1 bg-outline-variant rounded-full"></span>
+<span>Chief Editor @ MediaCorp</span>
+</div>
+</div>
+<div class="bg-surface-container-low p-4 rounded-xl border border-outline-variant/10">
+<h5 class="text-xs font-bold text-on-surface mb-3">Extracted Sentiment Profile</h5>
+<div class="space-y-3">
+<div>
+<div class="flex justify-between text-[10px] mb-1 font-bold">
+<span>ENJOYMENT</span>
+<span>95%</span>
+</div>
+<div class="h-1 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary" style="width: 95%;"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-[10px] mb-1 font-bold">
+<span>USABILITY</span>
+<span>88%</span>
+</div>
+<div class="h-1 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary-container" style="width: 88%;"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-[10px] mb-1 font-bold">
+<span>PRICE VALUE</span>
+<span>72%</span>
+</div>
+<div class="h-1 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-secondary" style="width: 72%;"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</article>
+<!-- Card 5: Positive -->
+<article class="bg-surface-container-lowest p-6 rounded-xl shadow-[0_8px_32px_rgba(22,29,25,0.04)] flex flex-col h-full border border-transparent hover:border-outline-variant/15 transition-all">
+<div class="flex justify-between items-start mb-6">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center font-bold text-primary">AL</div>
+<div>
+<h4 class="text-sm font-bold text-on-surface">Alex L.</h4>
+<p class="text-[10px] text-on-surface-variant">1 hour ago • App Store</p>
+</div>
+</div>
+<span class="bg-primary-container text-on-primary-container px-3 py-1 rounded-full text-[10px] font-bold">Positive</span>
+</div>
+<p class="text-sm leading-relaxed text-on-surface flex-1">
+                        "The best tool for market research. The categorization of 'Competitor Weakness' helped us define our new feature set perfectly."
+                    </p>
+<div class="mt-6 pt-6 border-t border-surface-container-low">
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 bg-primary-fixed rounded-full"></span>
+<span class="text-[10px] font-bold text-on-surface-variant">AI Confidence: 91%</span>
+</div>
+<span class="material-symbols-outlined text-sm text-on-surface-variant hover:text-primary cursor-pointer">share</span>
+</div>
+<div class="flex flex-wrap gap-2">
+<span class="text-[10px] bg-surface-container-low text-on-surface-variant px-2 py-1 rounded-md font-medium">#Research</span>
+<span class="text-[10px] bg-surface-container-low text-on-surface-variant px-2 py-1 rounded-md font-medium">#Features</span>
+</div>
+</div>
+</article>
+</div>
+<!-- Content Pagination / Load More -->
+<div class="mt-12 flex justify-center">
+<button class="bg-surface-container-low hover:bg-surface-container-highest text-on-surface px-8 py-3 rounded-xl font-bold text-sm transition-colors border border-outline-variant/10">
+                    Load Older Reviews
+                </button>
+</div>
+</main>
+</div>
+</body></html>

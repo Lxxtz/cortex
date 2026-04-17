@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Veridian Insight | The Lucid Analyst</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed": "#e1e2e4",
+                        "inverse-primary": "#4edea3",
+                        "tertiary-container": "#fc7c78",
+                        "surface-container-high": "#e3eae3",
+                        "on-tertiary-container": "#711419",
+                        "on-secondary-fixed": "#191c1e",
+                        "tertiary-fixed": "#ffdad7",
+                        "primary-fixed": "#6ffbbe",
+                        "surface": "#f4fbf4",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-fixed-dim": "#ffb3af",
+                        "secondary-fixed-dim": "#c5c6c8",
+                        "on-primary-fixed-variant": "#005236",
+                        "on-error-container": "#93000a",
+                        "surface-container": "#e8f0e9",
+                        "on-surface-variant": "#3c4a42",
+                        "surface-container-low": "#eef6ee",
+                        "secondary": "#5c5f60",
+                        "on-secondary-container": "#606365",
+                        "surface-container-highest": "#dde4dd",
+                        "secondary-container": "#dee0e2",
+                        "on-error": "#ffffff",
+                        "surface-bright": "#f4fbf4",
+                        "on-secondary": "#ffffff",
+                        "surface-tint": "#006c49",
+                        "on-secondary-fixed-variant": "#444749",
+                        "on-primary-container": "#00422b",
+                        "on-primary-fixed": "#002113",
+                        "primary": "#006c49",
+                        "on-tertiary-fixed-variant": "#842225",
+                        "on-surface": "#161d19",
+                        "primary-container": "#10b981",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary": "#a43a3a",
+                        "primary-fixed-dim": "#4edea3",
+                        "surface-dim": "#d4dcd5",
+                        "on-tertiary-fixed": "#410005",
+                        "outline-variant": "#bbcabf",
+                        "error-container": "#ffdad6",
+                        "background": "#f4fbf4",
+                        "on-primary": "#ffffff",
+                        "surface-variant": "#dde4dd",
+                        "outline": "#6c7a71",
+                        "on-background": "#161d19",
+                        "inverse-on-surface": "#ebf3eb",
+                        "error": "#ba1a1a",
+                        "inverse-surface": "#2b322d"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, .headline { font-family: 'Manrope', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopNavBar Shell -->
+<nav class="fixed top-0 w-full z-50 bg-[#f4fbf4]/80 dark:bg-[#161d19]/80 backdrop-blur-md shadow-[0_8px_32px_rgba(22,29,25,0.06)] flex justify-between items-center px-8 h-16 w-full font-['Manrope'] text-sm tracking-tight">
+<div class="flex items-center gap-8">
+<span class="text-xl font-bold tracking-tighter text-[#006c49] dark:text-[#10b981]">Veridian Insight</span>
+<div class="hidden md:flex items-center gap-6">
+<a class="text-[#006c49] font-semibold border-b-2 border-[#006c49] pb-1" href="#">Research</a>
+<a class="text-[#3c4a42] hover:text-[#006c49] transition-colors" href="#">Trends</a>
+<a class="text-[#3c4a42] hover:text-[#006c49] transition-colors" href="#">Reporting</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative hidden lg:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-sm">search</span>
+<input class="bg-surface-container-highest border-none rounded-full pl-10 pr-4 py-1.5 text-xs focus:ring-2 focus:ring-primary/30 w-64" placeholder="Search insights..." type="text"/>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 text-on-surface-variant hover:bg-[#eef6ee]/50 transition-all rounded-full"><span class="material-symbols-outlined">notifications</span></button>
+<button class="p-2 text-on-surface-variant hover:bg-[#eef6ee]/50 transition-all rounded-full"><span class="material-symbols-outlined">account_circle</span></button>
+<button class="bg-gradient-to-br from-primary to-primary-container text-on-primary px-5 py-2 rounded-xl text-xs font-semibold hover:scale-95 duration-200 transition-all">Get Started</button>
+</div>
+</div>
+</nav>
+<div class="flex pt-16">
+<!-- SideNavBar Shell -->
+<aside class="h-screen w-64 fixed left-0 top-0 pt-20 bg-[#eef6ee] dark:bg-[#1a231f] flex flex-col h-full border-r border-[#bbcabf]/15 font-['Inter'] text-sm font-medium hidden md:flex">
+<div class="px-8 mb-8">
+<div class="flex items-center gap-3 mb-1">
+<div class="w-8 h-8 rounded-full overflow-hidden bg-surface-container-highest">
+<img alt="Analyst Profile" class="w-full h-full object-cover" data-alt="professional portrait of a data analyst in a clean minimalist environment with soft natural lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBmE3SeJCeQ4x-BCLRr35AcvROKdV7f4Ro2gKjXinp_GAVONMTID42sOEn2qCxKS-CocYUj4uFJSg_HbW96Xv6QpIUDxnCKgio9GdmUNAEYmaitFJLWCQxgrTuPdc-WiIuVXFsXRd5KrcchS_Zd7sGiC0V06VHuvoC1R0ZkTnwdRZ6NXA11ZjlTA0ox2WkWEEn7JwD7SjuAjB-7fELrQDiuWWm2FDvWE81nwvD3R58J1Ov8ples7ntP3LmgwiRH2NlOmxsr-kCS0q46"/>
+</div>
+<div>
+<p class="text-on-surface text-xs font-bold leading-none">Editorial Intel</p>
+<p class="text-on-surface-variant text-[10px]">The Lucid Analyst</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 bg-white dark:bg-[#161d19] text-[#006c49] rounded-l-full ml-4 pl-4 py-3 shadow-sm hover:translate-x-1 transition-transform duration-300" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-3 text-[#3c4a42] dark:text-[#bbcabf] px-8 py-3 hover:translate-x-1 transition-transform duration-300" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span>Sentiment Feed</span>
+</a>
+<a class="flex items-center gap-3 text-[#3c4a42] dark:text-[#bbcabf] px-8 py-3 hover:translate-x-1 transition-transform duration-300" href="#">
+<span class="material-symbols-outlined">group_work</span>
+<span>Competitors</span>
+</a>
+<a class="flex items-center gap-3 text-[#3c4a42] dark:text-[#bbcabf] px-8 py-3 hover:translate-x-1 transition-transform duration-300" href="#">
+<span class="material-symbols-outlined">face</span>
+<span>Audience</span>
+</a>
+<a class="flex items-center gap-3 text-[#3c4a42] dark:text-[#bbcabf] px-8 py-3 hover:translate-x-1 transition-transform duration-300" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span>Settings</span>
+</a>
+</nav>
+<div class="p-6 mt-auto">
+<button class="w-full py-3 px-4 bg-primary text-white rounded-xl text-xs font-bold mb-8 hover:bg-on-primary-container transition-colors">
+                    New Analysis
+                </button>
+<div class="space-y-4">
+<a class="flex items-center gap-3 text-on-surface-variant text-xs hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-sm">menu_book</span>
+<span>Documentation</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant text-xs hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-sm">contact_support</span>
+<span>Support</span>
+</a>
+</div>
+</div>
+</aside>
+<!-- Main Canvas -->
+<main class="flex-1 md:ml-64 px-4 md:px-12 pb-24">
+<!-- Hero Section: The Lucid Search -->
+<section class="max-w-4xl mx-auto pt-24 pb-16 text-center">
+<h1 class="text-5xl md:text-7xl font-extrabold tracking-tighter text-on-surface mb-6 leading-[0.9]">
+                    Precision <span class="text-primary italic font-light">Sentiment</span> Analytics
+                </h1>
+<p class="text-on-surface-variant max-w-xl mx-auto mb-12 text-lg leading-relaxed">
+                    Transforming messy human narratives into actionable editorial intelligence with 99.4% AI accuracy.
+                </p>
+<div class="relative max-w-2xl mx-auto group">
+<div class="absolute -inset-1 bg-gradient-to-r from-primary/10 to-primary-container/10 blur-xl opacity-0 group-focus-within:opacity-100 transition-opacity"></div>
+<div class="relative bg-surface-container-lowest shadow-[0_8px_32px_rgba(22,29,25,0.08)] rounded-full flex items-center p-2 border border-outline-variant/10">
+<span class="material-symbols-outlined ml-4 text-outline">search</span>
+<input class="flex-1 bg-transparent border-none focus:ring-0 text-on-surface placeholder:text-outline-variant py-4 px-4" placeholder="Explore trends, topics, or brand sentiment..." type="text"/>
+<button class="bg-primary text-on-primary px-8 py-3 rounded-full font-bold text-sm hover:scale-95 transition-transform">Analyze</button>
+</div>
+</div>
+<div class="mt-8 flex flex-wrap justify-center gap-3">
+<span class="text-xs text-on-surface-variant uppercase tracking-widest font-bold self-center mr-2">Trending:</span>
+<span class="bg-primary-container text-on-primary-container px-4 py-1.5 rounded-full text-xs font-semibold cursor-pointer hover:brightness-105 transition-all shadow-sm">#SustainableFashion</span>
+<span class="bg-tertiary-container text-on-tertiary-container px-4 py-1.5 rounded-full text-xs font-semibold cursor-pointer hover:brightness-105 transition-all shadow-sm">#FintechRegulations</span>
+<span class="bg-surface-container-highest text-on-surface-variant px-4 py-1.5 rounded-full text-xs font-semibold cursor-pointer hover:brightness-105 transition-all shadow-sm">#GenerativeMedia</span>
+</div>
+</section>
+<!-- Bento Grid Insights -->
+<section class="grid grid-cols-1 md:grid-cols-12 gap-6 mt-12">
+<!-- Large Feature Card -->
+<div class="md:col-span-8 bg-surface-container-low rounded-[1.5rem] p-10 relative overflow-hidden group">
+<div class="relative z-10">
+<div class="flex items-center gap-2 mb-6">
+<span class="w-2 h-2 rounded-full bg-primary-fixed"></span>
+<span class="text-xs font-bold tracking-widest text-primary uppercase">Live Sentiment Flow</span>
+</div>
+<h2 class="text-4xl font-bold tracking-tighter text-on-surface mb-4 leading-tight">Deciphering the <br/>Digital Subtext.</h2>
+<p class="text-on-surface-variant max-w-md mb-8">Our neural engine identifies subtle emotional pivots in real-time, delivering accuracy that traditional tools miss.</p>
+<div class="flex gap-4">
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm w-40">
+<p class="text-primary text-3xl font-extrabold tracking-tighter">94%</p>
+<p class="text-[10px] uppercase font-bold text-outline mt-1">Positive Recall</p>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm w-40">
+<p class="text-tertiary text-3xl font-extrabold tracking-tighter">0.1s</p>
+<p class="text-[10px] uppercase font-bold text-outline mt-1">Latency Peak</p>
+</div>
+</div>
+</div>
+<div class="absolute right-0 bottom-0 w-1/2 h-full opacity-20 pointer-events-none group-hover:scale-105 transition-transform duration-700">
+<img alt="Analytics Graph" class="w-full h-full object-cover" data-alt="abstract 3D data visualization with glowing emerald lines and floating spheres on a minimalist white background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCHaeOPHr4T0smPW73RjYxuFlpNzGmeOp19znBKepcHbZkNmoG1K50RGaeO6kTYYPkxUNxI55-0m_k6jPUrzkNMegdJ8vT89dOcsZ4lUeW8ILFBD7zBssB5NHXRb3NUjy8uALg8qNBp45bL81CrhHBVqRhIuh3aAqvkgZZgNq58Dq2brpp12VAfDswta4bAtNzCaYKVLblp8iMCmzIcymBhviR3prhXgxUXqsRXqUkwGR7CgBoBs6KJr7qAwAFYzZ9z4kWVYS81k0mV"/>
+</div>
+</div>
+<!-- Secondary Metric Card -->
+<div class="md:col-span-4 bg-primary text-on-primary rounded-[1.5rem] p-10 flex flex-col justify-between">
+<div>
+<span class="material-symbols-outlined text-4xl mb-6">auto_awesome</span>
+<h3 class="text-2xl font-bold tracking-tight mb-4">The Lucid Advantage</h3>
+<p class="text-primary-fixed/80 text-sm leading-relaxed">Automated executive summaries that read like professional journalism. No more raw data fatigue.</p>
+</div>
+<button class="mt-8 flex items-center gap-2 text-sm font-bold group">
+                        View Demo <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</div>
+<!-- Small Cards -->
+<div class="md:col-span-4 bg-surface-container-lowest rounded-[1.5rem] p-8 shadow-[0_8px_32px_rgba(22,29,25,0.04)] border border-outline-variant/5">
+<span class="material-symbols-outlined text-primary mb-4">history_edu</span>
+<h4 class="font-bold text-lg mb-2">Narrative Tracking</h4>
+<p class="text-on-surface-variant text-sm">Watch how brand stories evolve over weeks, not just minutes.</p>
+</div>
+<div class="md:col-span-4 bg-surface-container-lowest rounded-[1.5rem] p-8 shadow-[0_8px_32px_rgba(22,29,25,0.04)] border border-outline-variant/5">
+<span class="material-symbols-outlined text-primary mb-4">psychology</span>
+<h4 class="font-bold text-lg mb-2">Cognitive Bias Filters</h4>
+<p class="text-on-surface-variant text-sm">AI trained to strip away inflammatory noise for pure sentiment signal.</p>
+</div>
+<div class="md:col-span-4 bg-surface-container-lowest rounded-[1.5rem] p-8 shadow-[0_8px_32px_rgba(22,29,25,0.04)] border border-outline-variant/5">
+<span class="material-symbols-outlined text-primary mb-4">share</span>
+<h4 class="font-bold text-lg mb-2">Stakeholder Sync</h4>
+<p class="text-on-surface-variant text-sm">Export high-fidelity reporting dashboards in one click.</p>
+</div>
+</section>
+<!-- Testimonial / Editorial Quote -->
+<section class="mt-24 border-t border-outline-variant/10 pt-16">
+<div class="max-w-3xl">
+<span class="material-symbols-outlined text-primary-container text-6xl mb-6" style="font-variation-settings: 'FILL' 1;">format_quote</span>
+<blockquote class="text-3xl font-light italic text-on-surface leading-tight mb-8">
+                        "Veridian Insight has fundamentally changed how we approach market trends. It’s the difference between hearing noise and reading the room."
+                    </blockquote>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-surface-container-highest">
+<img alt="Executive" class="w-full h-full object-cover" data-alt="close-up of a smiling executive woman in a high-end office with soft bokeh background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCwX1k5_G2Pcb8e-dtxNr4dAHws7LBBOwQtcTn7MtqRk6fTmxdsF-WZ16jse_vTMmd2ebStzfhiHnhCx2p9JDNmcVKXgG-ecuVt-C5m7DF0tZIk9XxYzZ9zhmgfqxZSN-5vL6K6oStCk4eYbH79cZZH-YnfhXdCizu9QAMpJl89AOqmGFFemF6w55e7v5zUm6Ub8OYq-N_TrTL86cChuzwmm0AQES4ke3cWUK2Fzc9XHl6oWt2kBSwFQYhrPQC5xcLxBS2ff5IQ0Wlq"/>
+</div>
+<div>
+<p class="font-bold text-sm">Julianna DeWitt</p>
+<p class="text-outline text-xs uppercase tracking-widest">Director of Strategy, Apex Global</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+</div>
+<!-- Floating Action Button (FAB) - Suppressed on Landing as per guidelines, but adding here as a ghost element for context if it was a dashboard -->
+<!-- Suppression logic applied for landing page focus -->
+</body></html>
