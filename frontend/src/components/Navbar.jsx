@@ -1,12 +1,14 @@
 import { Link, useLocation } from 'react-router-dom';
 import { useTheme } from '../ThemeContext';
-import { Sun, Moon } from 'lucide-react';
+import { useAuth } from '../AuthContext';
+import { Sun, Moon, LogOut } from 'lucide-react';
 
 export default function Navbar() {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const product = searchParams.get('product');
   const { theme, toggleTheme } = useTheme();
+  const { user, logout } = useAuth();
 
   return (
     <nav className="navbar" style={{ 
@@ -38,17 +40,19 @@ export default function Navbar() {
             >
               Live Feed
             </Link>
-            <Link 
-              to={`/analysis?product=${encodeURIComponent(product)}`}
-              style={{ 
-                color: location.pathname === '/analysis' ? 'var(--text-primary)' : 'var(--text-secondary)', 
-                textDecoration: 'none', padding: '0.4rem 0.85rem', borderRadius: '0.5rem', 
-                background: location.pathname === '/analysis' ? 'var(--accent-positive-bg)' : 'transparent',
-                fontSize: '0.8rem', fontWeight: 600, transition: 'all 0.2s ease'
-              }}
-            >
-              Analysis
-            </Link>
+            {user?.role === 'analyst' && (
+              <Link 
+                to={`/analysis?product=${encodeURIComponent(product)}`}
+                style={{ 
+                  color: location.pathname === '/analysis' ? 'var(--text-primary)' : 'var(--text-secondary)', 
+                  textDecoration: 'none', padding: '0.4rem 0.85rem', borderRadius: '0.5rem', 
+                  background: location.pathname === '/analysis' ? 'var(--accent-positive-bg)' : 'transparent',
+                  fontSize: '0.8rem', fontWeight: 600, transition: 'all 0.2s ease'
+                }}
+              >
+                Analysis
+              </Link>
+            )}
           </div>
         )}
         
@@ -71,6 +75,43 @@ export default function Navbar() {
             : <Moon size={16} strokeWidth={2.2} style={{ transition: 'transform 0.4s ease', transform: 'rotate(-30deg)' }} />
           }
         </button>
+        {(user?.role === 'analyst' || user?.role === 'marketing') ? (
+          <button
+            onClick={logout}
+            title="Logout"
+            style={{
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              width: '34px', height: '34px',
+              borderRadius: '0.5rem',
+              border: 'none',
+              background: 'var(--accent-negative-bg)',
+              color: 'var(--accent-negative)',
+              cursor: 'pointer',
+              transition: 'all 0.3s ease',
+            }}
+          >
+            <LogOut size={16} strokeWidth={2.2} />
+          </button>
+        ) : (
+          <Link
+            to="/login"
+            style={{
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              padding: '0.4rem 0.85rem',
+              borderRadius: '0.5rem',
+              border: '1px solid var(--glass-border)',
+              background: 'var(--surface-container)',
+              color: 'var(--text-primary)',
+              textDecoration: 'none',
+              fontSize: '0.8rem', fontWeight: 600,
+              transition: 'all 0.3s ease',
+            }}
+            onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'var(--accent-positive)' }}
+            onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'var(--glass-border)' }}
+          >
+            Login as Org
+          </Link>
+        )}
       </div>
     </nav>
   );

@@ -1,9 +1,10 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip as RechartsTooltip, Legend, AreaChart, Area, XAxis, YAxis, CartesianGrid } from 'recharts';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FilterX } from 'lucide-react';
-import { useLocation } from 'react-router-dom';
+import { FilterX, Download, ThumbsDown, Loader2, Sparkles } from 'lucide-react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useTheme } from '../ThemeContext';
+import { useAuth } from '../AuthContext';
 import rawData from '../data.json';
 import biData from '../bi_data.json';
 
@@ -100,22 +101,45 @@ const categorizeAspect = (feature, product = '') => {
   if (has(['camera', 'photo', 'video', 'lens', 'selfie'])) return "Camera";
   if (has(['service', 'delivery', 'support', 'customer', 'warranty', 'return'])) return "Service/Support";
 
-  return "General Experience";
+  return feature.charAt(0).toUpperCase() + feature.slice(1);
+};
+
+const isSarcastic = (text, emotion) => {
+  if (!text || !emotion.includes('Negative')) return false;
+  const t = text.toLowerCase();
+  const posWords = ['love', 'perfect', 'great', 'best', 'brilliant', 'wow', 'amazing', 'excellent', 'fantastic', 'genius'];
+  return posWords.some(w => t.includes(w));
 };
 
 function Analysis() {
   const location = useLocation();
+  const navigate = useNavigate();
   const searchParams = new URLSearchParams(location.search);
   const selectedProduct = searchParams.get('product') || 'All Products';
   const { theme } = useTheme();
+  const { user } = useAuth();
   const COLORS = theme === 'light' ? LIGHT_COLORS : DARK_COLORS;
 
-  const allReviews = useMemo(() => {
+  const [enterpriseProducts, setEnterpriseProducts] = useState([]);
+
+  useEffect(() => {
+    if (user?.enterpriseId) {
+      fetch(`http://localhost:8001/api/products/${user.enterpriseId}`)
+        .then(res => res.json())
+        .then(data => setEnterpriseProducts(data.products || []))
+        .catch(err => console.error("Failed to fetch enterprise products", err));
+    }
+  }, [user]);
+
+  const [localReviews, setLocalReviews] = useState(() => {
     return rawData.reviews.map(r => ({
       ...r,
       emotion: r.emotion?.replace(' (Cached)', '') || 'Neutral'
     }));
-  }, []);
+  });
+  const [reanalyzingId, setReanalyzingId] = useState(null);
+  
+  const allReviews = localReviews;
 
   const [selectedSlice, setSelectedSlice] = useState(null);
   const [selectedIssue, setSelectedIssue] = useState(null);
@@ -133,19 +157,33 @@ function Analysis() {
     return searchWords.every(word => dp.includes(word));
   };
 
+  const isEnterprise = !!user?.enterpriseId;
+
+  const filteredAllReviews = useMemo(() => {
+    if (!isEnterprise) return allReviews;
+    if (enterpriseProducts.length === 0) return [];
+    return allReviews.filter(r => enterpriseProducts.some(ep => isMatch(r.product, ep)));
+  }, [allReviews, isEnterprise, enterpriseProducts]);
+
+  const filteredBiData = useMemo(() => {
+    if (!isEnterprise) return biData;
+    if (enterpriseProducts.length === 0) return [];
+    return biData.filter(d => enterpriseProducts.some(ep => isMatch(d.product, ep)));
+  }, [isEnterprise, enterpriseProducts]);
+
   // Filter reviews by product
   const productReviews = useMemo(() => {
     return selectedProduct === 'All Products' 
-      ? allReviews 
-      : allReviews.filter(r => isMatch(r.product, selectedProduct));
-  }, [selectedProduct, allReviews]);
+      ? filteredAllReviews 
+      : filteredAllReviews.filter(r => isMatch(r.product, selectedProduct));
+  }, [selectedProduct, filteredAllReviews]);
 
   // Filter BI data by product
   const productBIData = useMemo(() => {
     return selectedProduct === 'All Products'
-      ? biData
-      : biData.filter(d => isMatch(d.product, selectedProduct));
-  }, [selectedProduct]);
+      ? filteredBiData
+      : filteredBiData.filter(d => isMatch(d.product, selectedProduct));
+  }, [selectedProduct, filteredBiData]);
 
   // Compute pie chart data
   const pieData = useMemo(() => {
@@ -262,24 +300,144 @@ function Analysis() {
     setSelectedIssue(prev => prev === issue ? null : issue);
   };
 
+  const handleReanalyze = async (review) => {
+    const rId = review.review_id || review.id || review.review_text;
+    setReanalyzingId(rId);
+    try {
+      const response = await fetch('http://localhost:8001/analyze_reviews', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          reviews: [review.review_text],
+          force_reanalyze: true
+        })
+      });
+      const data = await response.json();
+      if (data.reviews_analysis && data.reviews_analysis.length > 0) {
+        const newAnalysis = data.reviews_analysis[0];
+        setLocalReviews(prev => prev.map(r => 
+          (r.review_text === review.review_text) 
+            ? { ...r, emotion: newAnalysis.emotion, aspects: newAnalysis.aspects, confidence_score: newAnalysis.confidence_score } 
+            : r
+        ));
+      }
+    } catch (err) {
+      console.error(err);
+    }
+    setReanalyzingId(null);
+  };
+
+  const exportReport = () => {
+    const headers = ['Product', 'Issue Cluster', 'Frequency', 'Severity', 'Intensity', 'Impact Score', 'Est. Cost', 'ROI Score'];
+    const rows = productBIData.map(row => [
+      `"${row.product}"`,
+      `"${row.issue_cluster}"`,
+      row.frequency,
+      row.severity,
+      row.avg_intensity.toFixed(2),
+      row.impact_score.toFixed(1),
+      row.estimated_cost.toFixed(0),
+      row.roi_score.toFixed(3)
+    ]);
+    
+    const csvContent = "data:text/csv;charset=utf-8," 
+      + headers.join(",") + "\n" 
+      + rows.map(e => e.join(",")).join("\n");
+      
+    const encodedUri = encodeURI(csvContent);
+    const link = document.createElement("a");
+    link.setAttribute("href", encodedUri);
+    link.setAttribute("download", `Cortex_Report_${selectedProduct.replace(/\s+/g, '_')}.csv`);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <div className="app-container" style={{ paddingTop: '1rem' }}>
-      <header>
-        <motion.h1 
-          initial={{ opacity: 0, y: -20 }} 
-          animate={{ opacity: 1, y: 0 }}
+      <header style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <div>
+          <motion.h1 
+            initial={{ opacity: 0, y: -20 }} 
+            animate={{ opacity: 1, y: 0 }}
+          >
+            Cortex AI Intelligence: {selectedProduct}
+          </motion.h1>
+          <motion.p 
+            className="subtitle"
+            initial={{ opacity: 0 }} 
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.2 }}
+          >
+            Interactive BI Dashboard
+          </motion.p>
+        </div>
+        <motion.button
+          initial={{ opacity: 0, x: 20 }}
+          animate={{ opacity: 1, x: 0 }}
+          onClick={exportReport}
+          style={{
+            display: 'flex', alignItems: 'center', gap: '0.5rem',
+            padding: '0.6rem 1rem',
+            borderRadius: '0.5rem',
+            background: 'var(--surface-container)',
+            border: '1px solid var(--glass-border)',
+            color: 'var(--text-primary)',
+            fontSize: '0.9rem',
+            fontWeight: 600,
+            cursor: 'pointer',
+            transition: 'all 0.2s ease',
+            boxShadow: '0 4px 12px rgba(0,0,0,0.05)'
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.borderColor = 'var(--accent-positive)';
+            e.currentTarget.style.transform = 'translateY(-2px)';
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.borderColor = 'var(--glass-border)';
+            e.currentTarget.style.transform = 'translateY(0)';
+          }}
         >
-          Cortex AI Intelligence: {selectedProduct}
-        </motion.h1>
-        <motion.p 
-          className="subtitle"
-          initial={{ opacity: 0 }} 
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.2 }}
-        >
-          Interactive BI Dashboard
-        </motion.p>
+          <Download size={16} /> Export Report
+        </motion.button>
       </header>
+
+      {/* explicitly requested Product and Sentiment Filters */}
+      <div style={{ display: 'flex', gap: '1rem', marginBottom: '2rem', flexWrap: 'wrap' }}>
+        <select 
+          value={selectedProduct} 
+          onChange={(e) => navigate(`/analysis?product=${encodeURIComponent(e.target.value)}`)}
+          style={{ padding: '0.5rem 1rem', borderRadius: '0.5rem', background: 'var(--surface-container)', border: '1px solid var(--glass-border)', color: 'var(--text-primary)', fontSize: '0.95rem', cursor: 'pointer' }}
+        >
+          <option value="All Products">All Products</option>
+          {isEnterprise ? (
+            enterpriseProducts.map((p, i) => <option key={i} value={p}>{p}</option>)
+          ) : (
+            Array.from(new Set(allReviews.map(r => r.product))).map((p, i) => <option key={i} value={p}>{p}</option>)
+          )}
+        </select>
+        
+        <div style={{ display: 'flex', gap: '0.5rem', background: 'var(--surface-container-low)', padding: '0.25rem', borderRadius: '0.6rem', border: '1px solid var(--glass-border)' }}>
+          {['All', 'Positive', 'Negative', 'Neutral', 'Mixed'].map(sent => {
+            const isActive = (sent === 'All' && !selectedSlice) || selectedSlice === sent;
+            return (
+              <button
+                key={sent}
+                onClick={() => setSelectedSlice(sent === 'All' ? null : sent)}
+                style={{
+                  padding: '0.4rem 1rem', borderRadius: '0.4rem', border: 'none', cursor: 'pointer',
+                  fontSize: '0.85rem', fontWeight: 600, transition: 'all 0.2s ease',
+                  background: isActive ? 'var(--surface)' : 'transparent',
+                  color: isActive ? 'var(--text-primary)' : 'var(--text-secondary)',
+                  boxShadow: isActive ? '0 2px 8px rgba(0,0,0,0.1)' : 'none'
+                }}
+              >
+                {sent}
+              </button>
+            )
+          })}
+        </div>
+      </div>
 
         {/* Analytics Dashboard */}
         <div className="dashboard-grid">
@@ -485,12 +643,23 @@ function Analysis() {
                   exit={{ opacity: 0, scale: 0.9, transition: { duration: 0.2 } }}
                   transition={{ duration: 0.3 }}
                   key={idx + r.review_text.substring(0,10)} 
+                  whileHover={{ y: -5, boxShadow: '0 15px 35px -10px rgba(0,0,0,0.2)' }}
                   className="review-card" 
                   data-emotion={r.emotion}
+                  style={{ position: 'relative', overflow: 'hidden' }}
                 >
-                  <div className="card-header">
+                  <div style={{ position: 'absolute', top: 0, right: 0, width: '150px', height: '150px', background: `radial-gradient(circle at top right, ${COLORS[r.emotion] || 'var(--accent-positive)'}, transparent 70%)`, opacity: 0.1, pointerEvents: 'none' }} />
+                  
+                  <div className="card-header" style={{ position: 'relative', zIndex: 1 }}>
                     <div>
-                      <div className="product-name">{r.product}</div>
+                      <div className="product-name" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                        {r.product}
+                        {isSarcastic(r.review_text, r.emotion) && (
+                          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.2rem', background: 'var(--accent-negative-bg)', color: 'var(--accent-negative)', padding: '0.15rem 0.4rem', borderRadius: '4px', fontSize: '0.65rem', fontWeight: 800, letterSpacing: '0.05em' }}>
+                            <Sparkles size={10} /> SARCASM DETECTED
+                          </div>
+                        )}
+                      </div>
                       <div className="meta-info">
                         <span>{r.location}</span> • <span>{r.date}</span>
                       </div>
@@ -498,23 +667,40 @@ function Analysis() {
                     <div className="emotion-badge">{r.emotion}</div>
                   </div>
                   
-                  <div className="review-text">
+                  <div className="review-text" style={{ position: 'relative', zIndex: 1 }}>
                     "{r.review_text}"
                   </div>
                   
                   {r.aspects && r.aspects.length > 0 && (
-                    <div className="aspects-container">
+                    <div className="aspects-container" style={{ position: 'relative', zIndex: 1 }}>
                       {r.aspects.map((aspect, i) => (
-                        <div key={i} className="aspect-tag">
+                        <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: i * 0.05 }} key={i} className="aspect-tag">
                           <div className={`aspect-dot ${aspect.sentiment.toLowerCase()}`}></div>
                           {aspect.feature}
-                        </div>
+                        </motion.div>
                       ))}
                     </div>
                   )}
                   
-                  <div className="confidence">
-                    {(r.confidence_score * 100).toFixed(0)}% AI Confidence
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '1rem', paddingTop: '0.75rem', borderTop: '1px solid var(--glass-border)', position: 'relative', zIndex: 1 }}>
+                    <div className="confidence">
+                      {(r.confidence_score * 100).toFixed(0)}% AI Confidence
+                    </div>
+                    <button 
+                      onClick={() => handleReanalyze(r)}
+                      disabled={reanalyzingId === (r.review_id || r.id || r.review_text)}
+                      style={{ 
+                        background: 'transparent', border: '1px solid var(--glass-border)', padding: '0.35rem 0.75rem', 
+                        borderRadius: '0.5rem', color: 'var(--text-secondary)', cursor: 'pointer', display: 'flex', 
+                        alignItems: 'center', gap: '0.4rem', fontSize: '0.75rem', fontWeight: 600, transition: 'all 0.2s',
+                        opacity: reanalyzingId === (r.review_id || r.id || r.review_text) ? 0.7 : 1
+                      }}
+                      onMouseEnter={e => { if(!e.currentTarget.disabled){ e.currentTarget.style.color = 'var(--accent-negative)'; e.currentTarget.style.borderColor = 'var(--accent-negative)'; e.currentTarget.style.background = 'var(--accent-negative-bg)'; } }}
+                      onMouseLeave={e => { if(!e.currentTarget.disabled){ e.currentTarget.style.color = 'var(--text-secondary)'; e.currentTarget.style.borderColor = 'var(--glass-border)'; e.currentTarget.style.background = 'transparent'; } }}
+                    >
+                      {reanalyzingId === (r.review_id || r.id || r.review_text) ? <Loader2 size={14} className="spin" /> : <ThumbsDown size={14} />}
+                      {reanalyzingId === (r.review_id || r.id || r.review_text) ? 'Re-analyzing...' : 'Flag Incorrect'}
+                    </button>
                   </div>
                 </motion.div>
               ))}

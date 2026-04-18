@@ -52,7 +52,7 @@ def generate_bi_intelligence():
         if any(x in f for x in ['use', 'clean', 'learn', 'maintenance']): return "Usability/Maintenance"
         if any(x in f for x in ['price', 'cost', 'money', 'value']): return "Pricing"
         if any(x in f for x in ['safe', 'heat', 'burn']): return "Safety"
-        return "Other"
+        return feature.title() # Fallback to raw feature name if no cluster matches
 
     bi_data = {}
 
@@ -73,8 +73,8 @@ def generate_bi_intelligence():
                     bi_data[product][cluster] = {
                         "count": 0,
                         "total_intensity": 0.0,
-                        "severity": SEVERITY_TABLE[cluster],
-                        "cost_per_unit": COST_TABLE[cluster]
+                        "severity": SEVERITY_TABLE.get(cluster, 5),
+                        "cost_per_unit": COST_TABLE.get(cluster, 25.0)
                     }
                     
                 bi_data[product][cluster]["count"] += 1
@@ -111,7 +111,7 @@ def generate_bi_intelligence():
     # Sort by ROI score descending to highlight highest priority fixes
     final_bi.sort(key=lambda x: x["roi_score"], reverse=True)
 
-    with open("bi_intelligence.json", "w", encoding="utf-8") as f:
+    with open("frontend/src/bi_data.json", "w", encoding="utf-8") as f:
         json.dump(final_bi, f, indent=4)
         
     print(f"Successfully generated BI Intelligence Data! Total Issue Clusters: {len(final_bi)}")

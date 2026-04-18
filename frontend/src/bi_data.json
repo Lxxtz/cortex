@@ -40,6 +40,16 @@
         "roi_score": 0.3493
     },
     {
+        "product": "Mamaearth Sunscreen",
+        "issue_cluster": "Software/Connectivity",
+        "frequency": 4,
+        "severity": 6,
+        "avg_intensity": 0.86,
+        "impact_score": 20.58,
+        "estimated_cost": 60.0,
+        "roi_score": 0.343
+    },
+    {
         "product": "Litter-Robot 4",
         "issue_cluster": "Software/Connectivity",
         "frequency": 20,
@@ -48,6 +58,16 @@
         "impact_score": 99.48,
         "estimated_cost": 300.0,
         "roi_score": 0.3316
+    },
+    {
+        "product": "Lays Chips",
+        "issue_cluster": "Software/Connectivity",
+        "frequency": 3,
+        "severity": 6,
+        "avg_intensity": 0.82,
+        "impact_score": 14.76,
+        "estimated_cost": 45.0,
+        "roi_score": 0.328
     },
     {
         "product": "Nike Air Zoom Pegasus 40",
@@ -100,6 +120,86 @@
         "roi_score": 0.213
     },
     {
+        "product": "Mamaearth Onion Shampoo",
+        "issue_cluster": "Effect",
+        "frequency": 4,
+        "severity": 5,
+        "avg_intensity": 0.95,
+        "impact_score": 19.0,
+        "estimated_cost": 100.0,
+        "roi_score": 0.19
+    },
+    {
+        "product": "Lays Chips",
+        "issue_cluster": "Freshness",
+        "frequency": 6,
+        "severity": 5,
+        "avg_intensity": 0.92,
+        "impact_score": 27.65,
+        "estimated_cost": 150.0,
+        "roi_score": 0.1843
+    },
+    {
+        "product": "Lays Chips",
+        "issue_cluster": "Crunchiness",
+        "frequency": 6,
+        "severity": 5,
+        "avg_intensity": 0.92,
+        "impact_score": 27.65,
+        "estimated_cost": 150.0,
+        "roi_score": 0.1843
+    },
+    {
+        "product": "Mamaearth Ubtan Facewash",
+        "issue_cluster": "Effect",
+        "frequency": 7,
+        "severity": 5,
+        "avg_intensity": 0.92,
+        "impact_score": 32.05,
+        "estimated_cost": 175.0,
+        "roi_score": 0.1831
+    },
+    {
+        "product": "Lays Chips",
+        "issue_cluster": "Packaging",
+        "frequency": 7,
+        "severity": 5,
+        "avg_intensity": 0.91,
+        "impact_score": 32.0,
+        "estimated_cost": 175.0,
+        "roi_score": 0.1829
+    },
+    {
+        "product": "Mamaearth Sunscreen",
+        "issue_cluster": "Reaction",
+        "frequency": 6,
+        "severity": 5,
+        "avg_intensity": 0.91,
+        "impact_score": 27.4,
+        "estimated_cost": 150.0,
+        "roi_score": 0.1827
+    },
+    {
+        "product": "Mamaearth Sunscreen",
+        "issue_cluster": "Suitability",
+        "frequency": 8,
+        "severity": 5,
+        "avg_intensity": 0.91,
+        "impact_score": 36.3,
+        "estimated_cost": 200.0,
+        "roi_score": 0.1815
+    },
+    {
+        "product": "Mamaearth Sunscreen",
+        "issue_cluster": "Hydration",
+        "frequency": 8,
+        "severity": 5,
+        "avg_intensity": 0.91,
+        "impact_score": 36.3,
+        "estimated_cost": 200.0,
+        "roi_score": 0.1815
+    },
+    {
         "product": "PlayStation 5 Pro",
         "issue_cluster": "Input",
         "frequency": 29,
@@ -111,13 +211,293 @@
     },
     {
         "product": "Lays Chips",
-        "issue_cluster": "Usability/Maintenance",
-        "frequency": 44,
+        "issue_cluster": "Flavour",
+        "frequency": 7,
+        "severity": 5,
+        "avg_intensity": 0.89,
+        "impact_score": 31.3,
+        "estimated_cost": 175.0,
+        "roi_score": 0.1789
+    },
+    {
+        "product": "Mamaearth Onion Shampoo",
+        "issue_cluster": "Quality",
+        "frequency": 6,
+        "severity": 5,
+        "avg_intensity": 0.89,
+        "impact_score": 26.7,
+        "estimated_cost": 150.0,
+        "roi_score": 0.178
+    },
+    {
+        "product": "Tropicana Mixed Fruit Juice",
+        "issue_cluster": "Sugar Content",
+        "frequency": 3,
+        "severity": 5,
+        "avg_intensity": 0.89,
+        "impact_score": 13.3,
+        "estimated_cost": 75.0,
+        "roi_score": 0.1773
+    },
+    {
+        "product": "Tropicana Mixed Fruit Juice",
+        "issue_cluster": "Healthiness",
+        "frequency": 3,
+        "severity": 5,
+        "avg_intensity": 0.89,
+        "impact_score": 13.3,
+        "estimated_cost": 75.0,
+        "roi_score": 0.1773
+    },
+    {
+        "product": "Tropicana Mixed Fruit Juice",
+        "issue_cluster": "Thickness",
+        "frequency": 7,
+        "severity": 5,
+        "avg_intensity": 0.88,
+        "impact_score": 30.95,
+        "estimated_cost": 175.0,
+        "roi_score": 0.1769
+    },
+    {
+        "product": "Lays Chips",
+        "issue_cluster": "Oiliness",
+        "frequency": 3,
+        "severity": 5,
+        "avg_intensity": 0.88,
+        "impact_score": 13.15,
+        "estimated_cost": 75.0,
+        "roi_score": 0.1753
+    },
+    {
+        "product": "Tropicana Mixed Fruit Juice",
+        "issue_cluster": "Taste",
+        "frequency": 9,
+        "severity": 5,
+        "avg_intensity": 0.88,
+        "impact_score": 39.4,
+        "estimated_cost": 225.0,
+        "roi_score": 0.1751
+    },
+    {
+        "product": "Mamaearth Ubtan Facewash",
+        "issue_cluster": "Results",
+        "frequency": 9,
+        "severity": 5,
+        "avg_intensity": 0.88,
+        "impact_score": 39.4,
+        "estimated_cost": 225.0,
+        "roi_score": 0.1751
+    },
+    {
+        "product": "Mamaearth Ubtan Facewash",
+        "issue_cluster": "Packaging",
+        "frequency": 4,
+        "severity": 5,
+        "avg_intensity": 0.88,
+        "impact_score": 17.5,
+        "estimated_cost": 100.0,
+        "roi_score": 0.175
+    },
+    {
+        "product": "Mamaearth Sunscreen",
+        "issue_cluster": "Sweat",
+        "frequency": 8,
+        "severity": 5,
+        "avg_intensity": 0.87,
+        "impact_score": 34.95,
+        "estimated_cost": 200.0,
+        "roi_score": 0.1748
+    },
+    {
+        "product": "Mamaearth Sunscreen",
+        "issue_cluster": "Texture",
+        "frequency": 8,
+        "severity": 5,
+        "avg_intensity": 0.87,
+        "impact_score": 34.95,
+        "estimated_cost": 200.0,
+        "roi_score": 0.1748
+    },
+    {
+        "product": "Mamaearth Ubtan Facewash",
+        "issue_cluster": "Quality",
+        "frequency": 23,
+        "severity": 5,
+        "avg_intensity": 0.87,
+        "impact_score": 100.4,
+        "estimated_cost": 575.0,
+        "roi_score": 0.1746
+    },
+    {
+        "product": "Mamaearth Sunscreen",
+        "issue_cluster": "Protection",
+        "frequency": 8,
+        "severity": 5,
+        "avg_intensity": 0.87,
+        "impact_score": 34.9,
+        "estimated_cost": 200.0,
+        "roi_score": 0.1745
+    },
+    {
+        "product": "Lays Chips",
+        "issue_cluster": "Quantity",
+        "frequency": 16,
+        "severity": 5,
+        "avg_intensity": 0.87,
+        "impact_score": 69.8,
+        "estimated_cost": 400.0,
+        "roi_score": 0.1745
+    },
+    {
+        "product": "Mamaearth Sunscreen",
+        "issue_cluster": "Thickness",
+        "frequency": 10,
+        "severity": 5,
+        "avg_intensity": 0.87,
+        "impact_score": 43.55,
+        "estimated_cost": 250.0,
+        "roi_score": 0.1742
+    },
+    {
+        "product": "Mamaearth Sunscreen",
+        "issue_cluster": "Greasiness",
+        "frequency": 10,
+        "severity": 5,
+        "avg_intensity": 0.87,
+        "impact_score": 43.55,
+        "estimated_cost": 250.0,
+        "roi_score": 0.1742
+    },
+    {
+        "product": "Mamaearth Sunscreen",
+        "issue_cluster": "Quantity",
+        "frequency": 6,
+        "severity": 5,
+        "avg_intensity": 0.87,
+        "impact_score": 26.0,
+        "estimated_cost": 150.0,
+        "roi_score": 0.1733
+    },
+    {
+        "product": "Mamaearth Onion Shampoo",
+        "issue_cluster": "Results",
+        "frequency": 3,
+        "severity": 5,
+        "avg_intensity": 0.87,
+        "impact_score": 13.0,
+        "estimated_cost": 75.0,
+        "roi_score": 0.1733
+    },
+    {
+        "product": "Lays Chips",
+        "issue_cluster": "Saltiness",
+        "frequency": 6,
+        "severity": 5,
+        "avg_intensity": 0.86,
+        "impact_score": 25.8,
+        "estimated_cost": 150.0,
+        "roi_score": 0.172
+    },
+    {
+        "product": "Mamaearth Sunscreen",
+        "issue_cluster": "White Cast",
+        "frequency": 4,
+        "severity": 5,
+        "avg_intensity": 0.85,
+        "impact_score": 17.1,
+        "estimated_cost": 100.0,
+        "roi_score": 0.171
+    },
+    {
+        "product": "Tropicana Mixed Fruit Juice",
+        "issue_cluster": "Freshness",
+        "frequency": 4,
+        "severity": 5,
+        "avg_intensity": 0.85,
+        "impact_score": 17.1,
+        "estimated_cost": 100.0,
+        "roi_score": 0.171
+    },
+    {
+        "product": "Mamaearth Onion Shampoo",
+        "issue_cluster": "Packaging",
+        "frequency": 10,
+        "severity": 5,
+        "avg_intensity": 0.86,
+        "impact_score": 42.75,
+        "estimated_cost": 250.0,
+        "roi_score": 0.171
+    },
+    {
+        "product": "Tropicana Mixed Fruit Juice",
+        "issue_cluster": "Flavour",
+        "frequency": 14,
+        "severity": 5,
+        "avg_intensity": 0.85,
+        "impact_score": 59.8,
+        "estimated_cost": 350.0,
+        "roi_score": 0.1709
+    },
+    {
+        "product": "Tropicana Mixed Fruit Juice",
+        "issue_cluster": "Ingredients",
+        "frequency": 13,
+        "severity": 5,
+        "avg_intensity": 0.84,
+        "impact_score": 54.6,
+        "estimated_cost": 325.0,
+        "roi_score": 0.168
+    },
+    {
+        "product": "Lays Chips",
+        "issue_cluster": "Input",
+        "frequency": 1,
         "severity": 6,
         "avg_intensity": 0.84,
-        "impact_score": 221.76,
-        "estimated_cost": 1496,
-        "roi_score": 0.1482
+        "impact_score": 5.04,
+        "estimated_cost": 30.0,
+        "roi_score": 0.168
+    },
+    {
+        "product": "Tropicana Mixed Fruit Juice",
+        "issue_cluster": "Authenticity",
+        "frequency": 9,
+        "severity": 5,
+        "avg_intensity": 0.83,
+        "impact_score": 37.3,
+        "estimated_cost": 225.0,
+        "roi_score": 0.1658
+    },
+    {
+        "product": "Mamaearth Sunscreen",
+        "issue_cluster": "Oiliness",
+        "frequency": 7,
+        "severity": 5,
+        "avg_intensity": 0.82,
+        "impact_score": 28.6,
+        "estimated_cost": 175.0,
+        "roi_score": 0.1634
+    },
+    {
+        "product": "Mamaearth Sunscreen",
+        "issue_cluster": "Breakouts",
+        "frequency": 7,
+        "severity": 5,
+        "avg_intensity": 0.82,
+        "impact_score": 28.6,
+        "estimated_cost": 175.0,
+        "roi_score": 0.1634
+    },
+    {
+        "product": "Mamaearth Onion Shampoo",
+        "issue_cluster": "Audio",
+        "frequency": 6,
+        "severity": 6,
+        "avg_intensity": 0.89,
+        "impact_score": 31.98,
+        "estimated_cost": 240.0,
+        "roi_score": 0.1333
     },
     {
         "product": "Sony WH-1000XM5 Headphones",
@@ -130,14 +510,24 @@
         "roi_score": 0.1312
     },
     {
-        "product": "Mamaearth Sunscreen",
-        "issue_cluster": "Pricing",
-        "frequency": 41,
+        "product": "Mamaearth Ubtan Facewash",
+        "issue_cluster": "Audio",
+        "frequency": 4,
         "severity": 6,
-        "avg_intensity": 0.85,
-        "impact_score": 209.1,
-        "estimated_cost": 1968,
-        "roi_score": 0.1062
+        "avg_intensity": 0.84,
+        "impact_score": 20.22,
+        "estimated_cost": 160.0,
+        "roi_score": 0.1264
+    },
+    {
+        "product": "Lays Chips",
+        "issue_cluster": "Audio",
+        "frequency": 1,
+        "severity": 6,
+        "avg_intensity": 0.84,
+        "impact_score": 5.04,
+        "estimated_cost": 40.0,
+        "roi_score": 0.126
     },
     {
         "product": "Apple iPad Pro M4",
@@ -217,6 +607,16 @@
         "avg_intensity": 0.87,
         "impact_score": 412.64,
         "estimated_cost": 4720.0,
+        "roi_score": 0.0874
+    },
+    {
+        "product": "Lays Chips",
+        "issue_cluster": "Performance",
+        "frequency": 8,
+        "severity": 8,
+        "avg_intensity": 0.87,
+        "impact_score": 55.92,
+        "estimated_cost": 640.0,
         "roi_score": 0.0874
     },
     {
@@ -300,16 +700,6 @@
         "roi_score": 0.0599
     },
     {
-        "product": "Mamaearth Sunscreen",
-        "issue_cluster": "Build/Design",
-        "frequency": 27,
-        "severity": 6,
-        "avg_intensity": 0.9,
-        "impact_score": 145.8,
-        "estimated_cost": 2619,
-        "roi_score": 0.0557
-    },
-    {
         "product": "Tesla Model Y",
         "issue_cluster": "Battery",
         "frequency": 24,
@@ -328,16 +718,6 @@
         "impact_score": 274.77,
         "estimated_cost": 5075.0,
         "roi_score": 0.0541
-    },
-    {
-        "product": "Lays Chips",
-        "issue_cluster": "Other",
-        "frequency": 46,
-        "severity": 4,
-        "avg_intensity": 0.9,
-        "impact_score": 165.6,
-        "estimated_cost": 3128,
-        "roi_score": 0.0529
     },
     {
         "product": "Tesla Model Y",
@@ -380,34 +760,14 @@
         "roi_score": 0.0522
     },
     {
-        "product": "Lays Chips",
-        "issue_cluster": "Pricing",
-        "frequency": 57,
-        "severity": 4,
-        "avg_intensity": 0.82,
-        "impact_score": 186.96,
-        "estimated_cost": 4845,
-        "roi_score": 0.0386
-    },
-    {
-        "product": "Tropicana Mixed Fruit Juice",
-        "issue_cluster": "Other",
-        "frequency": 40,
-        "severity": 4,
-        "avg_intensity": 0.83,
-        "impact_score": 132.8,
-        "estimated_cost": 3640,
-        "roi_score": 0.0365
-    },
-    {
-        "product": "Tropicana Mixed Fruit Juice",
-        "issue_cluster": "Pricing",
-        "frequency": 31,
-        "severity": 3,
-        "avg_intensity": 0.86,
-        "impact_score": 79.98,
-        "estimated_cost": 2418,
-        "roi_score": 0.0331
+        "product": "Mamaearth Sunscreen",
+        "issue_cluster": "Safety",
+        "frequency": 6,
+        "severity": 10,
+        "avg_intensity": 0.91,
+        "impact_score": 54.8,
+        "estimated_cost": 3000.0,
+        "roi_score": 0.0183
     },
     {
         "product": "Dyson Airwrap",

@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { useAuth } from '../AuthContext';
 
 const EXAMPLES = [
   "Dyson V15 Detect Vacuum",
@@ -14,6 +15,8 @@ const EXAMPLES = [
   "Dyson Airwrap",
   "Apple iPad Pro M4",
   "Mamaearth Sunscreen",
+  "Mamaearth Onion Shampoo",
+  "Mamaearth Ubtan Facewash",
   "Tropicana Mixed Fruit Juice",
   "Lays Chips"
 ];
@@ -187,9 +190,38 @@ function FloatingWords() {
 }
 
 export default function Home() {
+  const { user } = useAuth();
   const [query, setQuery] = useState('');
+  const [showQueryDropdown, setShowQueryDropdown] = useState(false);
   const [placeholderIndex, setPlaceholderIndex] = useState(0);
+  const [enterpriseProducts, setEnterpriseProducts] = useState([]);
+  const [newProduct, setNewProduct] = useState('');
+  const [showNewProductDropdown, setShowNewProductDropdown] = useState(false);
   const navigate = useNavigate();
+
+  const queryMatches = query.trim() 
+    ? EXAMPLES.filter(e => e.toLowerCase().includes(query.toLowerCase()) && e !== query)
+    : [];
+
+  const newProductMatches = newProduct.trim()
+    ? EXAMPLES.filter(e => e.toLowerCase().includes(newProduct.toLowerCase()) && e !== newProduct)
+    : [];
+
+  const fetchProducts = async () => {
+    if (user && user.enterpriseId) {
+      try {
+        const res = await fetch(`http://localhost:8001/api/products/${user.enterpriseId}`);
+        const data = await res.json();
+        setEnterpriseProducts(data.products || []);
+      } catch (err) {
+        console.error("Failed to fetch products:", err);
+      }
+    }
+  };
+
+  useEffect(() => {
+    fetchProducts();
+  }, [user]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -208,8 +240,46 @@ export default function Home() {
     }
   };
 
+  const handleAddProduct = async (e) => {
+    e.preventDefault();
+    if (newProduct.trim() && user && user.enterpriseId) {
+      try {
+        await fetch('http://localhost:8001/api/products', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            enterprise_id: user.enterpriseId,
+            product_name: newProduct.trim()
+          })
+        });
+        setNewProduct('');
+        fetchProducts();
+      } catch (err) {
+        console.error("Failed to add product", err);
+      }
+    }
+  };
+
+  const handleRemoveProduct = async (productToRemove) => {
+    if (user && user.enterpriseId) {
+      try {
+        await fetch('http://localhost:8001/api/products', {
+          method: 'DELETE',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            enterprise_id: user.enterpriseId,
+            product_name: productToRemove
+          })
+        });
+        fetchProducts();
+      } catch (err) {
+        console.error("Failed to remove product", err);
+      }
+    }
+  };
+
   return (
-    <div style={{ height: '70vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', position: 'relative', overflow: 'hidden' }}>
+    <div style={{ minHeight: '70vh', padding: '2rem 0', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', position: 'relative', overflow: 'hidden' }}>
       {/* Interactive background */}
       <FloatingOrbs />
       <FloatingWords />
@@ -218,40 +288,142 @@ export default function Home() {
       <motion.h1 
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
-        style={{ fontSize: '2.5rem', marginBottom: '0.75rem', position: 'relative', zIndex: 1 }}
+        style={{ fontSize: '2.5rem', marginBottom: '0.75rem', position: 'relative', zIndex: 1, textAlign: 'center' }}
       >
-        Search Products
+        {user?.companyName ? `Welcome, ${user.companyName}` : 'Search Products'}
       </motion.h1>
       <motion.p
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.2 }}
-        style={{ color: 'var(--text-secondary)', marginBottom: '1.5rem', fontSize: '0.95rem', position: 'relative', zIndex: 1 }}
+        style={{ color: 'var(--text-secondary)', marginBottom: '1.5rem', fontSize: '0.95rem', position: 'relative', zIndex: 1, textAlign: 'center' }}
       >
         Analyze real-time customer feedback using Cortex AI.
       </motion.p>
 
-      <motion.form 
-        onSubmit={handleSearch}
-        initial={{ opacity: 0, scale: 0.9 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ delay: 0.3 }}
-        style={{ width: '100%', maxWidth: '500px', display: 'flex', gap: '0.5rem', position: 'relative', zIndex: 1 }}
-      >
-        <input 
-          type="text" 
-          placeholder={`e.g. ${EXAMPLES[placeholderIndex]}`}
-          value={query}
-          onChange={e => setQuery(e.target.value)}
-          style={{ flex: 1, padding: '1rem', borderRadius: '0.5rem', border: '1px solid var(--glass-border)', background: 'var(--surface-container)', color: 'var(--text-primary)', fontSize: '1.1rem', transition: 'all 0.3s ease' }}
-        />
-        <button 
-          type="submit"
-          style={{ padding: '0 2rem', borderRadius: '0.5rem', background: 'var(--accent-positive)', color: 'var(--surface)', fontWeight: 'bold', fontSize: '1.1rem', cursor: 'pointer', border: 'none', transition: 'all 0.2s ease' }}
+      {!user?.enterpriseId && (
+        <motion.form 
+          onSubmit={handleSearch}
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.3 }}
+          style={{ width: '100%', maxWidth: '500px', display: 'flex', gap: '0.5rem', position: 'relative', zIndex: 2, marginBottom: '2rem' }}
         >
-          Analyze
-        </button>
-      </motion.form>
+          <div style={{ position: 'relative', flex: 1 }}>
+            <input 
+              type="text" 
+              placeholder={`e.g. ${EXAMPLES[placeholderIndex]}`}
+              value={query}
+              onChange={e => { setQuery(e.target.value); setShowQueryDropdown(true); }}
+              onFocus={() => setShowQueryDropdown(true)}
+              onBlur={() => setShowQueryDropdown(false)}
+              style={{ width: '100%', padding: '1rem', borderRadius: '0.5rem', border: '1px solid var(--glass-border)', background: 'var(--surface-container)', color: 'var(--text-primary)', fontSize: '1.1rem', transition: 'all 0.3s ease' }}
+            />
+            {showQueryDropdown && queryMatches.length > 0 && (
+              <div style={{ position: 'absolute', top: '100%', left: 0, right: 0, marginTop: '0.5rem', background: 'var(--surface-container-high)', border: '1px solid var(--glass-border)', borderRadius: '0.5rem', overflow: 'hidden', boxShadow: '0 10px 25px var(--shadow-ambient)', zIndex: 10 }}>
+                {queryMatches.map((match, idx) => (
+                  <div 
+                    key={idx}
+                    onMouseDown={(e) => { e.preventDefault(); setQuery(match); setShowQueryDropdown(false); }}
+                    style={{ padding: '0.75rem 1rem', cursor: 'pointer', color: 'var(--text-primary)', fontSize: '1rem', borderBottom: idx < queryMatches.length - 1 ? '1px solid var(--glass-border)' : 'none' }}
+                    onMouseEnter={e => e.currentTarget.style.background = 'var(--surface-container-highest)'}
+                    onMouseLeave={e => e.currentTarget.style.background = 'transparent'}
+                  >
+                    {match}
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+          <button 
+            type="submit"
+            style={{ padding: '0 2rem', borderRadius: '0.5rem', background: 'var(--accent-positive)', color: '#fff', fontWeight: 'bold', fontSize: '1.1rem', cursor: 'pointer', border: 'none', transition: 'all 0.2s ease' }}
+          >
+            Analyze
+          </button>
+        </motion.form>
+      )}
+
+      {user?.enterpriseId && (
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4 }}
+          style={{ width: '100%', maxWidth: '700px', background: 'var(--surface-container-low)', padding: '2rem', borderRadius: '1rem', border: '1px solid var(--glass-border)', position: 'relative', zIndex: 1 }}
+        >
+          <h2 style={{ fontSize: '1.25rem', marginBottom: '1rem', color: 'var(--text-primary)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            Enterprise Portfolio
+          </h2>
+          
+          <form onSubmit={handleAddProduct} style={{ display: 'flex', gap: '0.5rem', marginBottom: '1.5rem', position: 'relative' }}>
+            <div style={{ position: 'relative', flex: 1 }}>
+              <input 
+                type="text" 
+                placeholder="Add new product to portfolio..."
+                value={newProduct}
+                onChange={e => { setNewProduct(e.target.value); setShowNewProductDropdown(true); }}
+                onFocus={() => setShowNewProductDropdown(true)}
+                onBlur={() => setShowNewProductDropdown(false)}
+                style={{ width: '100%', padding: '0.75rem 1rem', borderRadius: '0.5rem', border: '1px solid var(--glass-border)', background: 'var(--surface-container)', color: 'var(--text-primary)', fontSize: '0.9rem' }}
+              />
+              {showNewProductDropdown && newProductMatches.length > 0 && (
+                <div style={{ position: 'absolute', top: '100%', left: 0, right: 0, marginTop: '0.5rem', background: 'var(--surface-container-high)', border: '1px solid var(--glass-border)', borderRadius: '0.5rem', overflow: 'hidden', boxShadow: '0 10px 25px var(--shadow-ambient)', zIndex: 10 }}>
+                  {newProductMatches.map((match, idx) => (
+                    <div 
+                      key={idx}
+                      onMouseDown={(e) => { e.preventDefault(); setNewProduct(match); setShowNewProductDropdown(false); }}
+                      style={{ padding: '0.75rem 1rem', cursor: 'pointer', color: 'var(--text-primary)', fontSize: '0.9rem', borderBottom: idx < newProductMatches.length - 1 ? '1px solid var(--glass-border)' : 'none' }}
+                      onMouseEnter={e => e.currentTarget.style.background = 'var(--surface-container-highest)'}
+                      onMouseLeave={e => e.currentTarget.style.background = 'transparent'}
+                    >
+                      {match}
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+            <button 
+              type="submit"
+              style={{ padding: '0 1rem', borderRadius: '0.5rem', background: 'var(--surface-container-high)', border: '1px solid var(--glass-border)', color: 'var(--text-primary)', fontWeight: '600', cursor: 'pointer' }}
+            >
+              Add Product
+            </button>
+          </form>
+
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem' }}>
+            {enterpriseProducts.length === 0 && <p style={{ color: 'var(--text-secondary)', fontSize: '0.85rem' }}>No products added yet.</p>}
+            {enterpriseProducts.map((prod, idx) => (
+              <div key={idx} style={{ display: 'flex', alignItems: 'center', background: 'var(--surface)', border: '1px solid var(--accent-mixed-bg)', borderRadius: '0.5rem', overflow: 'hidden' }}>
+                <button
+                  onClick={() => navigate(`/feed?product=${encodeURIComponent(prod)}`)}
+                  style={{
+                    padding: '0.75rem 1.25rem', background: 'transparent',
+                    border: 'none', color: 'var(--text-primary)', fontWeight: '600',
+                    cursor: 'pointer', transition: 'all 0.2s ease', display: 'flex', alignItems: 'center', gap: '0.5rem'
+                  }}
+                  onMouseEnter={e => { e.currentTarget.style.background = 'var(--accent-mixed-bg)'; }}
+                  onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; }}
+                >
+                  <div style={{ width: 8, height: 8, borderRadius: '50%', background: 'var(--accent-mixed)' }} />
+                  {prod}
+                </button>
+                <button
+                  onClick={() => handleRemoveProduct(prod)}
+                  style={{
+                    padding: '0.75rem', background: 'transparent', border: 'none', borderLeft: '1px solid var(--accent-mixed-bg)',
+                    color: 'var(--text-secondary)', cursor: 'pointer', transition: 'all 0.2s ease', display: 'flex', alignItems: 'center', justifyContent: 'center'
+                  }}
+                  onMouseEnter={e => { e.currentTarget.style.background = 'var(--accent-negative-bg)'; e.currentTarget.style.color = 'var(--accent-negative)'; }}
+                  onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = 'var(--text-secondary)'; }}
+                  title="Remove Product"
+                >
+                  ✕
+                </button>
+              </div>
+            ))}
+          </div>
+        </motion.div>
+      )}
     </div>
   );
 }

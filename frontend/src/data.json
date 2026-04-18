@@ -1,5 +1,5 @@
 {
-    "total_analyzed": 1300,
+    "total_analyzed": 1500,
     "reviews": [
         {
             "product": "Herman Miller Aeron Chair",
@@ -22785,6 +22785,2878 @@
                 },
                 {
                     "feature": "availability",
+                    "sentiment": "Negative"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Onion Shampoo",
+            "date": "04 January 2026",
+            "location": "Pune, IND",
+            "review_text": "Khushboo bohot achi hai, bilkul natural feel hota hai.",
+            "emotion": "Positive",
+            "confidence_score": 0.78,
+            "aspects": [
+                {
+                    "feature": "fragrance",
+                    "sentiment": "Positive"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Onion Shampoo",
+            "date": "02 September 2025",
+            "location": "Delhi, IND",
+            "review_text": "Hairfall control ekdum mast hai, really love the smell.",
+            "emotion": "Positive",
+            "confidence_score": 0.81,
+            "aspects": [
+                {
+                    "feature": "results",
+                    "sentiment": "Positive"
+                },
+                {
+                    "feature": "fragrance",
+                    "sentiment": "Positive"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Onion Shampoo",
+            "date": "28 July 2025",
+            "location": "Chennai, IND",
+            "review_text": "Hairfall control ekdum mast hai, really love the smell.",
+            "emotion": "Positive",
+            "confidence_score": 0.92,
+            "aspects": [
+                {
+                    "feature": "results",
+                    "sentiment": "Positive"
+                },
+                {
+                    "feature": "fragrance",
+                    "sentiment": "Positive"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Onion Shampoo",
+            "date": "20 June 2025",
+            "location": "Delhi, IND",
+            "review_text": "Pump is broken! Delivery wale ne tod diya.",
+            "emotion": "Negative",
+            "confidence_score": 0.84,
+            "aspects": [
+                {
+                    "feature": "packaging",
+                    "sentiment": "Negative"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Onion Shampoo",
+            "date": "03 December 2025",
+            "location": "Chennai, IND",
+            "review_text": "Best onion shampoo in the market, baal shine kar rahe hain.",
+            "emotion": "Positive",
+            "confidence_score": 0.94,
+            "aspects": [
+                {
+                    "feature": "quality",
+                    "sentiment": "Positive"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Onion Shampoo",
+            "date": "30 March 2026",
+            "location": "Pune, IND",
+            "review_text": "Baal aur jhadne lage yaar, totally bakwas.",
+            "emotion": "Negative",
+            "confidence_score": 0.83,
+            "aspects": [
+                {
+                    "feature": "quality",
+                    "sentiment": "Negative"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Onion Shampoo",
+            "date": "13 September 2025",
+            "location": "Bangalore, IND",
+            "review_text": "Baal bohot soft ho gaye, maza aa gaya!",
+            "emotion": "Positive",
+            "confidence_score": 0.96,
+            "aspects": [
+                {
+                    "feature": "effect",
+                    "sentiment": "Positive"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Onion Shampoo",
+            "date": "24 October 2025",
+            "location": "Mumbai, IND",
+            "review_text": "Bhai baal jhaadu ban gaye, sasta wala dove hi theek tha.",
+            "emotion": "Negative",
+            "confidence_score": 0.88,
+            "aspects": [
+                {
+                    "feature": "price",
+                    "sentiment": "Negative"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Onion Shampoo",
+            "date": "11 February 2026",
+            "location": "Mumbai, IND",
+            "review_text": "Baal bohot soft ho gaye, maza aa gaya!",
+            "emotion": "Positive",
+            "confidence_score": 0.82,
+            "aspects": [
+                {
+                    "feature": "effect",
+                    "sentiment": "Positive"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Onion Shampoo",
+            "date": "20 January 2026",
+            "location": "Bangalore, IND",
+            "review_text": "Bhai baal jhaadu ban gaye, sasta wala dove hi theek tha.",
+            "emotion": "Negative",
+            "confidence_score": 0.85,
+            "aspects": [
+                {
+                    "feature": "price",
+                    "sentiment": "Negative"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Onion Shampoo",
+            "date": "25 May 2025",
+            "location": "Mumbai, IND",
+            "review_text": "Pump is broken! Delivery wale ne tod diya.",
+            "emotion": "Negative",
+            "confidence_score": 0.89,
+            "aspects": [
+                {
+                    "feature": "packaging",
+                    "sentiment": "Negative"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Onion Shampoo",
+            "date": "22 December 2025",
+            "location": "Delhi, IND",
+            "review_text": "Baal aur jhadne lage yaar, totally bakwas.",
+            "emotion": "Negative",
+            "confidence_score": 0.81,
+            "aspects": [
+                {
+                    "feature": "quality",
+                    "sentiment": "Negative"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Onion Shampoo",
+            "date": "24 December 2025",
+            "location": "Bangalore, IND",
+            "review_text": "Smell thodi ajeeb hai, bilkul aam jaisi.",
+            "emotion": "Negative",
+            "confidence_score": 0.94,
+            "aspects": [
+                {
+                    "feature": "fragrance",
+                    "sentiment": "Negative"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Onion Shampoo",
+            "date": "03 November 2025",
+            "location": "Chennai, IND",
+            "review_text": "Sasta aur tikau, works better than expensive ones.",
+            "emotion": "Positive",
+            "confidence_score": 0.95,
+            "aspects": [
+                {
+                    "feature": "price",
+                    "sentiment": "Positive"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Onion Shampoo",
+            "date": "09 March 2026",
+            "location": "Mumbai, IND",
+            "review_text": "Baal bohot soft ho gaye, maza aa gaya!",
+            "emotion": "Positive",
+            "confidence_score": 0.76,
+            "aspects": [
+                {
+                    "feature": "effect",
+                    "sentiment": "Positive"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Onion Shampoo",
+            "date": "30 April 2025",
+            "location": "Mumbai, IND",
+            "review_text": "Baal bohot soft ho gaye, maza aa gaya!",
+            "emotion": "Positive",
+            "confidence_score": 0.95,
+            "aspects": [
+                {
+                    "feature": "effect",
+                    "sentiment": "Positive"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Onion Shampoo",
+            "date": "31 October 2025",
+            "location": "Pune, IND",
+            "review_text": "Baal bohot soft ho gaye, maza aa gaya!",
+            "emotion": "Positive",
+            "confidence_score": 0.95,
+            "aspects": [
+                {
+                    "feature": "effect",
+                    "sentiment": "Positive"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Onion Shampoo",
+            "date": "22 July 2025",
+            "location": "Delhi, IND",
+            "review_text": "Khushboo bohot achi hai, bilkul natural feel hota hai.",
+            "emotion": "Positive",
+            "confidence_score": 0.78,
+            "aspects": [
+                {
+                    "feature": "fragrance",
+                    "sentiment": "Positive"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Onion Shampoo",
+            "date": "26 October 2025",
+            "location": "Bangalore, IND",
+            "review_text": "Price thoda high hai quantity ke hisaab se, not paisa vasool.",
+            "emotion": "Negative",
+            "confidence_score": 0.78,
+            "aspects": [
+                {
+                    "feature": "price",
+                    "sentiment": "Negative"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Onion Shampoo",
+            "date": "28 June 2025",
+            "location": "Pune, IND",
+            "review_text": "Smell thodi ajeeb hai, bilkul aam jaisi.",
+            "emotion": "Negative",
+            "confidence_score": 0.98,
+            "aspects": [
+                {
+                    "feature": "fragrance",
+                    "sentiment": "Negative"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Onion Shampoo",
+            "date": "08 June 2025",
+            "location": "Delhi, IND",
+            "review_text": "Baal bohot soft ho gaye, maza aa gaya!",
+            "emotion": "Positive",
+            "confidence_score": 0.84,
+            "aspects": [
+                {
+                    "feature": "effect",
+                    "sentiment": "Positive"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Onion Shampoo",
+            "date": "15 June 2025",
+            "location": "Delhi, IND",
+            "review_text": "Khushboo bohot achi hai, bilkul natural feel hota hai.",
+            "emotion": "Positive",
+            "confidence_score": 0.88,
+            "aspects": [
+                {
+                    "feature": "fragrance",
+                    "sentiment": "Positive"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Onion Shampoo",
+            "date": "05 December 2025",
+            "location": "Chennai, IND",
+            "review_text": "Baal bohot soft ho gaye, maza aa gaya!",
+            "emotion": "Positive",
+            "confidence_score": 0.86,
+            "aspects": [
+                {
+                    "feature": "effect",
+                    "sentiment": "Positive"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Onion Shampoo",
+            "date": "16 March 2026",
+            "location": "Bangalore, IND",
+            "review_text": "Bohot dry kar deta hai hair ko, frizz control zero.",
+            "emotion": "Negative",
+            "confidence_score": 0.97,
+            "aspects": [
+                {
+                    "feature": "effect",
+                    "sentiment": "Negative"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Onion Shampoo",
+            "date": "04 October 2025",
+            "location": "Chennai, IND",
+            "review_text": "Smell thodi ajeeb hai, bilkul aam jaisi.",
+            "emotion": "Negative",
+            "confidence_score": 0.87,
+            "aspects": [
+                {
+                    "feature": "fragrance",
+                    "sentiment": "Negative"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Onion Shampoo",
+            "date": "19 January 2026",
+            "location": "Jaipur, IND",
+            "review_text": "Hairfall control ekdum mast hai, really love the smell.",
+            "emotion": "Positive",
+            "confidence_score": 0.79,
+            "aspects": [
+                {
+                    "feature": "results",
+                    "sentiment": "Positive"
+                },
+                {
+                    "feature": "fragrance",
+                    "sentiment": "Positive"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Onion Shampoo",
+            "date": "18 February 2026",
+            "location": "Chennai, IND",
+            "review_text": "Hairfall control ekdum mast hai, really love the smell.",
+            "emotion": "Positive",
+            "confidence_score": 0.95,
+            "aspects": [
+                {
+                    "feature": "results",
+                    "sentiment": "Positive"
+                },
+                {
+                    "feature": "fragrance",
+                    "sentiment": "Positive"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Onion Shampoo",
+            "date": "12 September 2025",
+            "location": "Pune, IND",
+            "review_text": "Pump is broken! Delivery wale ne tod diya.",
+            "emotion": "Negative",
+            "confidence_score": 0.75,
+            "aspects": [
+                {
+                    "feature": "packaging",
+                    "sentiment": "Negative"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Onion Shampoo",
+            "date": "29 November 2025",
+            "location": "Delhi, IND",
+            "review_text": "My mom loves it, unke baal kaafi ghane lag rahe hain ab.",
+            "emotion": "Positive",
+            "confidence_score": 0.85,
+            "aspects": [
+                {
+                    "feature": "quality",
+                    "sentiment": "Positive"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Onion Shampoo",
+            "date": "18 September 2025",
+            "location": "Chennai, IND",
+            "review_text": "Bhai, ye shampoo toh magic hai, no chemicals.",
+            "emotion": "Positive",
+            "confidence_score": 0.77,
+            "aspects": [
+                {
+                    "feature": "quality",
+                    "sentiment": "Positive"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Onion Shampoo",
+            "date": "20 February 2026",
+            "location": "Bangalore, IND",
+            "review_text": "Sasta aur tikau, works better than expensive ones.",
+            "emotion": "Positive",
+            "confidence_score": 0.85,
+            "aspects": [
+                {
+                    "feature": "price",
+                    "sentiment": "Positive"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Onion Shampoo",
+            "date": "06 October 2025",
+            "location": "Pune, IND",
+            "review_text": "Bhai baal jhaadu ban gaye, sasta wala dove hi theek tha.",
+            "emotion": "Negative",
+            "confidence_score": 0.77,
+            "aspects": [
+                {
+                    "feature": "price",
+                    "sentiment": "Negative"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Onion Shampoo",
+            "date": "18 May 2025",
+            "location": "Pune, IND",
+            "review_text": "Pump is broken! Delivery wale ne tod diya.",
+            "emotion": "Negative",
+            "confidence_score": 0.79,
+            "aspects": [
+                {
+                    "feature": "packaging",
+                    "sentiment": "Negative"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Onion Shampoo",
+            "date": "19 September 2025",
+            "location": "Pune, IND",
+            "review_text": "Smell thodi ajeeb hai, bilkul aam jaisi.",
+            "emotion": "Negative",
+            "confidence_score": 0.8,
+            "aspects": [
+                {
+                    "feature": "fragrance",
+                    "sentiment": "Negative"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Onion Shampoo",
+            "date": "23 September 2025",
+            "location": "Delhi, IND",
+            "review_text": "Hairfall control ekdum mast hai, really love the smell.",
+            "emotion": "Positive",
+            "confidence_score": 0.9,
+            "aspects": [
+                {
+                    "feature": "results",
+                    "sentiment": "Positive"
+                },
+                {
+                    "feature": "fragrance",
+                    "sentiment": "Positive"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Onion Shampoo",
+            "date": "02 June 2025",
+            "location": "Jaipur, IND",
+            "review_text": "Baal bohot soft ho gaye, maza aa gaya!",
+            "emotion": "Positive",
+            "confidence_score": 0.91,
+            "aspects": [
+                {
+                    "feature": "effect",
+                    "sentiment": "Positive"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Onion Shampoo",
+            "date": "12 December 2025",
+            "location": "Delhi, IND",
+            "review_text": "Bhai, ye shampoo toh magic hai, no chemicals.",
+            "emotion": "Positive",
+            "confidence_score": 0.91,
+            "aspects": [
+                {
+                    "feature": "quality",
+                    "sentiment": "Positive"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Onion Shampoo",
+            "date": "09 December 2025",
+            "location": "Pune, IND",
+            "review_text": "Pump is broken! Delivery wale ne tod diya.",
+            "emotion": "Negative",
+            "confidence_score": 0.88,
+            "aspects": [
+                {
+                    "feature": "packaging",
+                    "sentiment": "Negative"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Onion Shampoo",
+            "date": "01 February 2026",
+            "location": "Jaipur, IND",
+            "review_text": "Hairfall control ekdum mast hai, really love the smell.",
+            "emotion": "Positive",
+            "confidence_score": 0.8,
+            "aspects": [
+                {
+                    "feature": "results",
+                    "sentiment": "Positive"
+                },
+                {
+                    "feature": "fragrance",
+                    "sentiment": "Positive"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Onion Shampoo",
+            "date": "18 July 2025",
+            "location": "Mumbai, IND",
+            "review_text": "Sasta aur tikau, works better than expensive ones.",
+            "emotion": "Positive",
+            "confidence_score": 0.97,
+            "aspects": [
+                {
+                    "feature": "price",
+                    "sentiment": "Positive"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Onion Shampoo",
+            "date": "04 February 2026",
+            "location": "Delhi, IND",
+            "review_text": "Gimmick hai bas, hairfall ruka hi nahi.",
+            "emotion": "Negative",
+            "confidence_score": 0.84,
+            "aspects": [
+                {
+                    "feature": "results",
+                    "sentiment": "Negative"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Onion Shampoo",
+            "date": "10 September 2025",
+            "location": "Delhi, IND",
+            "review_text": "Smell thodi ajeeb hai, bilkul aam jaisi.",
+            "emotion": "Negative",
+            "confidence_score": 0.81,
+            "aspects": [
+                {
+                    "feature": "fragrance",
+                    "sentiment": "Negative"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Onion Shampoo",
+            "date": "25 May 2025",
+            "location": "Bangalore, IND",
+            "review_text": "Sasta aur tikau, works better than expensive ones.",
+            "emotion": "Positive",
+            "confidence_score": 0.85,
+            "aspects": [
+                {
+                    "feature": "price",
+                    "sentiment": "Positive"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Onion Shampoo",
+            "date": "29 July 2025",
+            "location": "Pune, IND",
+            "review_text": "Baal bohot soft ho gaye, maza aa gaya!",
+            "emotion": "Positive",
+            "confidence_score": 0.94,
+            "aspects": [
+                {
+                    "feature": "effect",
+                    "sentiment": "Positive"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Onion Shampoo",
+            "date": "13 April 2026",
+            "location": "Chennai, IND",
+            "review_text": "Smell thodi ajeeb hai, bilkul aam jaisi.",
+            "emotion": "Negative",
+            "confidence_score": 0.93,
+            "aspects": [
+                {
+                    "feature": "fragrance",
+                    "sentiment": "Negative"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Onion Shampoo",
+            "date": "12 February 2026",
+            "location": "Bangalore, IND",
+            "review_text": "Sasta aur tikau, works better than expensive ones.",
+            "emotion": "Positive",
+            "confidence_score": 0.98,
+            "aspects": [
+                {
+                    "feature": "price",
+                    "sentiment": "Positive"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Onion Shampoo",
+            "date": "27 October 2025",
+            "location": "Delhi, IND",
+            "review_text": "Jhakaas result! Dandruff chala gaya pichle 2 wash mein.",
+            "emotion": "Positive",
+            "confidence_score": 0.77,
+            "aspects": [
+                {
+                    "feature": "quality",
+                    "sentiment": "Positive"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Onion Shampoo",
+            "date": "19 December 2025",
+            "location": "Mumbai, IND",
+            "review_text": "Best onion shampoo in the market, baal shine kar rahe hain.",
+            "emotion": "Positive",
+            "confidence_score": 0.94,
+            "aspects": [
+                {
+                    "feature": "quality",
+                    "sentiment": "Positive"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Onion Shampoo",
+            "date": "06 August 2025",
+            "location": "Jaipur, IND",
+            "review_text": "Price thoda high hai quantity ke hisaab se, not paisa vasool.",
+            "emotion": "Negative",
+            "confidence_score": 0.83,
+            "aspects": [
+                {
+                    "feature": "price",
+                    "sentiment": "Negative"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Onion Shampoo",
+            "date": "14 January 2026",
+            "location": "Delhi, IND",
+            "review_text": "Baal aur jhadne lage yaar, totally bakwas.",
+            "emotion": "Negative",
+            "confidence_score": 0.93,
+            "aspects": [
+                {
+                    "feature": "quality",
+                    "sentiment": "Negative"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Onion Shampoo",
+            "date": "28 April 2025",
+            "location": "Bangalore, IND",
+            "review_text": "Sasta aur tikau, works better than expensive ones.",
+            "emotion": "Positive",
+            "confidence_score": 0.79,
+            "aspects": [
+                {
+                    "feature": "price",
+                    "sentiment": "Positive"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Onion Shampoo",
+            "date": "04 January 2026",
+            "location": "Mumbai, IND",
+            "review_text": "Jhakaas result! Dandruff chala gaya pichle 2 wash mein.",
+            "emotion": "Positive",
+            "confidence_score": 0.94,
+            "aspects": [
+                {
+                    "feature": "quality",
+                    "sentiment": "Positive"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Onion Shampoo",
+            "date": "20 February 2026",
+            "location": "Jaipur, IND",
+            "review_text": "Best onion shampoo in the market, baal shine kar rahe hain.",
+            "emotion": "Positive",
+            "confidence_score": 0.76,
+            "aspects": [
+                {
+                    "feature": "quality",
+                    "sentiment": "Positive"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Onion Shampoo",
+            "date": "18 September 2025",
+            "location": "Bangalore, IND",
+            "review_text": "Khushboo bohot achi hai, bilkul natural feel hota hai.",
+            "emotion": "Positive",
+            "confidence_score": 0.98,
+            "aspects": [
+                {
+                    "feature": "fragrance",
+                    "sentiment": "Positive"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Onion Shampoo",
+            "date": "29 November 2025",
+            "location": "Mumbai, IND",
+            "review_text": "Bhai, ye shampoo toh magic hai, no chemicals.",
+            "emotion": "Positive",
+            "confidence_score": 0.9,
+            "aspects": [
+                {
+                    "feature": "quality",
+                    "sentiment": "Positive"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Onion Shampoo",
+            "date": "23 July 2025",
+            "location": "Delhi, IND",
+            "review_text": "Baal aur jhadne lage yaar, totally bakwas.",
+            "emotion": "Negative",
+            "confidence_score": 0.87,
+            "aspects": [
+                {
+                    "feature": "quality",
+                    "sentiment": "Negative"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Onion Shampoo",
+            "date": "27 July 2025",
+            "location": "Delhi, IND",
+            "review_text": "Sasta aur tikau, works better than expensive ones.",
+            "emotion": "Positive",
+            "confidence_score": 0.8,
+            "aspects": [
+                {
+                    "feature": "price",
+                    "sentiment": "Positive"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Onion Shampoo",
+            "date": "16 March 2026",
+            "location": "Pune, IND",
+            "review_text": "Bohot dry kar deta hai hair ko, frizz control zero.",
+            "emotion": "Negative",
+            "confidence_score": 0.96,
+            "aspects": [
+                {
+                    "feature": "effect",
+                    "sentiment": "Negative"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Onion Shampoo",
+            "date": "27 October 2025",
+            "location": "Bangalore, IND",
+            "review_text": "Bhai baal jhaadu ban gaye, sasta wala dove hi theek tha.",
+            "emotion": "Negative",
+            "confidence_score": 0.94,
+            "aspects": [
+                {
+                    "feature": "price",
+                    "sentiment": "Negative"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Onion Shampoo",
+            "date": "22 May 2025",
+            "location": "Jaipur, IND",
+            "review_text": "Baal aur jhadne lage yaar, totally bakwas.",
+            "emotion": "Negative",
+            "confidence_score": 0.94,
+            "aspects": [
+                {
+                    "feature": "quality",
+                    "sentiment": "Negative"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Onion Shampoo",
+            "date": "20 February 2026",
+            "location": "Pune, IND",
+            "review_text": "Price thoda high hai quantity ke hisaab se, not paisa vasool.",
+            "emotion": "Negative",
+            "confidence_score": 0.86,
+            "aspects": [
+                {
+                    "feature": "price",
+                    "sentiment": "Negative"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Onion Shampoo",
+            "date": "05 May 2025",
+            "location": "Jaipur, IND",
+            "review_text": "Bohot dry kar deta hai hair ko, frizz control zero.",
+            "emotion": "Negative",
+            "confidence_score": 0.91,
+            "aspects": [
+                {
+                    "feature": "effect",
+                    "sentiment": "Negative"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Onion Shampoo",
+            "date": "04 September 2025",
+            "location": "Bangalore, IND",
+            "review_text": "Bhai baal jhaadu ban gaye, sasta wala dove hi theek tha.",
+            "emotion": "Negative",
+            "confidence_score": 0.83,
+            "aspects": [
+                {
+                    "feature": "price",
+                    "sentiment": "Negative"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Onion Shampoo",
+            "date": "22 January 2026",
+            "location": "Bangalore, IND",
+            "review_text": "Baal bohot soft ho gaye, maza aa gaya!",
+            "emotion": "Positive",
+            "confidence_score": 0.84,
+            "aspects": [
+                {
+                    "feature": "effect",
+                    "sentiment": "Positive"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Onion Shampoo",
+            "date": "28 October 2025",
+            "location": "Jaipur, IND",
+            "review_text": "Bhai, ye shampoo toh magic hai, no chemicals.",
+            "emotion": "Positive",
+            "confidence_score": 0.83,
+            "aspects": [
+                {
+                    "feature": "quality",
+                    "sentiment": "Positive"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Onion Shampoo",
+            "date": "18 May 2025",
+            "location": "Jaipur, IND",
+            "review_text": "Pump is broken! Delivery wale ne tod diya.",
+            "emotion": "Negative",
+            "confidence_score": 0.9,
+            "aspects": [
+                {
+                    "feature": "packaging",
+                    "sentiment": "Negative"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Onion Shampoo",
+            "date": "22 October 2025",
+            "location": "Chennai, IND",
+            "review_text": "Pump is broken! Delivery wale ne tod diya.",
+            "emotion": "Negative",
+            "confidence_score": 0.93,
+            "aspects": [
+                {
+                    "feature": "packaging",
+                    "sentiment": "Negative"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Onion Shampoo",
+            "date": "23 October 2025",
+            "location": "Chennai, IND",
+            "review_text": "Khushboo bohot achi hai, bilkul natural feel hota hai.",
+            "emotion": "Positive",
+            "confidence_score": 0.85,
+            "aspects": [
+                {
+                    "feature": "fragrance",
+                    "sentiment": "Positive"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Onion Shampoo",
+            "date": "06 March 2026",
+            "location": "Mumbai, IND",
+            "review_text": "Gimmick hai bas, hairfall ruka hi nahi.",
+            "emotion": "Negative",
+            "confidence_score": 0.91,
+            "aspects": [
+                {
+                    "feature": "results",
+                    "sentiment": "Negative"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Onion Shampoo",
+            "date": "12 October 2025",
+            "location": "Pune, IND",
+            "review_text": "Sasta aur tikau, works better than expensive ones.",
+            "emotion": "Positive",
+            "confidence_score": 0.78,
+            "aspects": [
+                {
+                    "feature": "price",
+                    "sentiment": "Positive"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Onion Shampoo",
+            "date": "16 November 2025",
+            "location": "Pune, IND",
+            "review_text": "Pump is broken! Delivery wale ne tod diya.",
+            "emotion": "Negative",
+            "confidence_score": 0.75,
+            "aspects": [
+                {
+                    "feature": "packaging",
+                    "sentiment": "Negative"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Onion Shampoo",
+            "date": "09 November 2025",
+            "location": "Jaipur, IND",
+            "review_text": "Baal bohot soft ho gaye, maza aa gaya!",
+            "emotion": "Positive",
+            "confidence_score": 0.86,
+            "aspects": [
+                {
+                    "feature": "effect",
+                    "sentiment": "Positive"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Onion Shampoo",
+            "date": "12 September 2025",
+            "location": "Mumbai, IND",
+            "review_text": "Sasta aur tikau, works better than expensive ones.",
+            "emotion": "Positive",
+            "confidence_score": 0.85,
+            "aspects": [
+                {
+                    "feature": "price",
+                    "sentiment": "Positive"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Onion Shampoo",
+            "date": "11 July 2025",
+            "location": "Pune, IND",
+            "review_text": "Best onion shampoo in the market, baal shine kar rahe hain.",
+            "emotion": "Positive",
+            "confidence_score": 0.86,
+            "aspects": [
+                {
+                    "feature": "quality",
+                    "sentiment": "Positive"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Onion Shampoo",
+            "date": "15 January 2026",
+            "location": "Mumbai, IND",
+            "review_text": "Bhai, ye shampoo toh magic hai, no chemicals.",
+            "emotion": "Positive",
+            "confidence_score": 0.95,
+            "aspects": [
+                {
+                    "feature": "quality",
+                    "sentiment": "Positive"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Onion Shampoo",
+            "date": "02 February 2026",
+            "location": "Jaipur, IND",
+            "review_text": "Baal aur jhadne lage yaar, totally bakwas.",
+            "emotion": "Negative",
+            "confidence_score": 0.96,
+            "aspects": [
+                {
+                    "feature": "quality",
+                    "sentiment": "Negative"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Onion Shampoo",
+            "date": "28 August 2025",
+            "location": "Pune, IND",
+            "review_text": "Price thoda high hai quantity ke hisaab se, not paisa vasool.",
+            "emotion": "Negative",
+            "confidence_score": 0.9,
+            "aspects": [
+                {
+                    "feature": "price",
+                    "sentiment": "Negative"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Onion Shampoo",
+            "date": "14 July 2025",
+            "location": "Bangalore, IND",
+            "review_text": "Bohot dry kar deta hai hair ko, frizz control zero.",
+            "emotion": "Negative",
+            "confidence_score": 0.96,
+            "aspects": [
+                {
+                    "feature": "effect",
+                    "sentiment": "Negative"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Onion Shampoo",
+            "date": "01 December 2025",
+            "location": "Mumbai, IND",
+            "review_text": "Baal bohot soft ho gaye, maza aa gaya!",
+            "emotion": "Positive",
+            "confidence_score": 0.76,
+            "aspects": [
+                {
+                    "feature": "effect",
+                    "sentiment": "Positive"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Onion Shampoo",
+            "date": "27 July 2025",
+            "location": "Bangalore, IND",
+            "review_text": "Bhai, ye shampoo toh magic hai, no chemicals.",
+            "emotion": "Positive",
+            "confidence_score": 0.78,
+            "aspects": [
+                {
+                    "feature": "quality",
+                    "sentiment": "Positive"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Onion Shampoo",
+            "date": "03 May 2025",
+            "location": "Pune, IND",
+            "review_text": "Bhai, ye shampoo toh magic hai, no chemicals.",
+            "emotion": "Positive",
+            "confidence_score": 0.9,
+            "aspects": [
+                {
+                    "feature": "quality",
+                    "sentiment": "Positive"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Onion Shampoo",
+            "date": "30 April 2025",
+            "location": "Bangalore, IND",
+            "review_text": "My mom loves it, unke baal kaafi ghane lag rahe hain ab.",
+            "emotion": "Positive",
+            "confidence_score": 0.89,
+            "aspects": [
+                {
+                    "feature": "quality",
+                    "sentiment": "Positive"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Onion Shampoo",
+            "date": "06 October 2025",
+            "location": "Delhi, IND",
+            "review_text": "Gimmick hai bas, hairfall ruka hi nahi.",
+            "emotion": "Negative",
+            "confidence_score": 0.85,
+            "aspects": [
+                {
+                    "feature": "results",
+                    "sentiment": "Negative"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Onion Shampoo",
+            "date": "06 December 2025",
+            "location": "Delhi, IND",
+            "review_text": "Pump is broken! Delivery wale ne tod diya.",
+            "emotion": "Negative",
+            "confidence_score": 0.95,
+            "aspects": [
+                {
+                    "feature": "packaging",
+                    "sentiment": "Negative"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Onion Shampoo",
+            "date": "23 August 2025",
+            "location": "Pune, IND",
+            "review_text": "Best onion shampoo in the market, baal shine kar rahe hain.",
+            "emotion": "Positive",
+            "confidence_score": 0.89,
+            "aspects": [
+                {
+                    "feature": "quality",
+                    "sentiment": "Positive"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Onion Shampoo",
+            "date": "10 July 2025",
+            "location": "Chennai, IND",
+            "review_text": "My mom loves it, unke baal kaafi ghane lag rahe hain ab.",
+            "emotion": "Positive",
+            "confidence_score": 0.76,
+            "aspects": [
+                {
+                    "feature": "quality",
+                    "sentiment": "Positive"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Onion Shampoo",
+            "date": "29 August 2025",
+            "location": "Mumbai, IND",
+            "review_text": "Jhakaas result! Dandruff chala gaya pichle 2 wash mein.",
+            "emotion": "Positive",
+            "confidence_score": 0.96,
+            "aspects": [
+                {
+                    "feature": "quality",
+                    "sentiment": "Positive"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Onion Shampoo",
+            "date": "25 January 2026",
+            "location": "Pune, IND",
+            "review_text": "Baal bohot soft ho gaye, maza aa gaya!",
+            "emotion": "Positive",
+            "confidence_score": 0.86,
+            "aspects": [
+                {
+                    "feature": "effect",
+                    "sentiment": "Positive"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Onion Shampoo",
+            "date": "08 April 2026",
+            "location": "Delhi, IND",
+            "review_text": "Jhakaas result! Dandruff chala gaya pichle 2 wash mein.",
+            "emotion": "Positive",
+            "confidence_score": 0.81,
+            "aspects": [
+                {
+                    "feature": "quality",
+                    "sentiment": "Positive"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Onion Shampoo",
+            "date": "07 February 2026",
+            "location": "Bangalore, IND",
+            "review_text": "Bhai, ye shampoo toh magic hai, no chemicals.",
+            "emotion": "Positive",
+            "confidence_score": 0.97,
+            "aspects": [
+                {
+                    "feature": "quality",
+                    "sentiment": "Positive"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Onion Shampoo",
+            "date": "29 December 2025",
+            "location": "Pune, IND",
+            "review_text": "Pump is broken! Delivery wale ne tod diya.",
+            "emotion": "Negative",
+            "confidence_score": 0.87,
+            "aspects": [
+                {
+                    "feature": "packaging",
+                    "sentiment": "Negative"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Onion Shampoo",
+            "date": "28 December 2025",
+            "location": "Delhi, IND",
+            "review_text": "Bhai, ye shampoo toh magic hai, no chemicals.",
+            "emotion": "Positive",
+            "confidence_score": 0.78,
+            "aspects": [
+                {
+                    "feature": "quality",
+                    "sentiment": "Positive"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Onion Shampoo",
+            "date": "08 November 2025",
+            "location": "Delhi, IND",
+            "review_text": "Price thoda high hai quantity ke hisaab se, not paisa vasool.",
+            "emotion": "Negative",
+            "confidence_score": 0.99,
+            "aspects": [
+                {
+                    "feature": "price",
+                    "sentiment": "Negative"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Onion Shampoo",
+            "date": "28 April 2025",
+            "location": "Bangalore, IND",
+            "review_text": "Hairfall control ekdum mast hai, really love the smell.",
+            "emotion": "Positive",
+            "confidence_score": 0.98,
+            "aspects": [
+                {
+                    "feature": "results",
+                    "sentiment": "Positive"
+                },
+                {
+                    "feature": "fragrance",
+                    "sentiment": "Positive"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Onion Shampoo",
+            "date": "08 December 2025",
+            "location": "Chennai, IND",
+            "review_text": "Jhakaas result! Dandruff chala gaya pichle 2 wash mein.",
+            "emotion": "Positive",
+            "confidence_score": 0.9,
+            "aspects": [
+                {
+                    "feature": "quality",
+                    "sentiment": "Positive"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Onion Shampoo",
+            "date": "09 November 2025",
+            "location": "Jaipur, IND",
+            "review_text": "Best onion shampoo in the market, baal shine kar rahe hain.",
+            "emotion": "Positive",
+            "confidence_score": 0.98,
+            "aspects": [
+                {
+                    "feature": "quality",
+                    "sentiment": "Positive"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Onion Shampoo",
+            "date": "23 May 2025",
+            "location": "Chennai, IND",
+            "review_text": "Bhai, ye shampoo toh magic hai, no chemicals.",
+            "emotion": "Positive",
+            "confidence_score": 0.84,
+            "aspects": [
+                {
+                    "feature": "quality",
+                    "sentiment": "Positive"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Onion Shampoo",
+            "date": "20 June 2025",
+            "location": "Bangalore, IND",
+            "review_text": "Price thoda high hai quantity ke hisaab se, not paisa vasool.",
+            "emotion": "Negative",
+            "confidence_score": 0.94,
+            "aspects": [
+                {
+                    "feature": "price",
+                    "sentiment": "Negative"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Onion Shampoo",
+            "date": "01 December 2025",
+            "location": "Jaipur, IND",
+            "review_text": "Jhakaas result! Dandruff chala gaya pichle 2 wash mein.",
+            "emotion": "Positive",
+            "confidence_score": 0.98,
+            "aspects": [
+                {
+                    "feature": "quality",
+                    "sentiment": "Positive"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Onion Shampoo",
+            "date": "06 February 2026",
+            "location": "Bangalore, IND",
+            "review_text": "My mom loves it, unke baal kaafi ghane lag rahe hain ab.",
+            "emotion": "Positive",
+            "confidence_score": 0.82,
+            "aspects": [
+                {
+                    "feature": "quality",
+                    "sentiment": "Positive"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Ubtan Facewash",
+            "date": "12 August 2025",
+            "location": "Jaipur, IND",
+            "review_text": "Paisa vasool face wash, quantity achi hai.",
+            "emotion": "Positive",
+            "confidence_score": 0.92,
+            "aspects": [
+                {
+                    "feature": "price",
+                    "sentiment": "Positive"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Ubtan Facewash",
+            "date": "05 May 2025",
+            "location": "Jaipur, IND",
+            "review_text": "Maza aa gaya dho ke, feel like fresh mogra.",
+            "emotion": "Positive",
+            "confidence_score": 0.79,
+            "aspects": [
+                {
+                    "feature": "quality",
+                    "sentiment": "Positive"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Ubtan Facewash",
+            "date": "28 January 2026",
+            "location": "Bangalore, IND",
+            "review_text": "Scrub particles bohot harsh hain, chubhte hain skin pe.",
+            "emotion": "Negative",
+            "confidence_score": 0.97,
+            "aspects": [
+                {
+                    "feature": "quality",
+                    "sentiment": "Negative"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Ubtan Facewash",
+            "date": "06 July 2025",
+            "location": "Mumbai, IND",
+            "review_text": "Scrub particles bohot harsh hain, chubhte hain skin pe.",
+            "emotion": "Negative",
+            "confidence_score": 0.9,
+            "aspects": [
+                {
+                    "feature": "quality",
+                    "sentiment": "Negative"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Ubtan Facewash",
+            "date": "15 June 2025",
+            "location": "Jaipur, IND",
+            "review_text": "Pimple kam ho gaye, meri oily skin ke liye best hai.",
+            "emotion": "Positive",
+            "confidence_score": 0.76,
+            "aspects": [
+                {
+                    "feature": "results",
+                    "sentiment": "Positive"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Ubtan Facewash",
+            "date": "11 April 2026",
+            "location": "Pune, IND",
+            "review_text": "Skin glow karne lagi hai, tan remove ho gaya finally.",
+            "emotion": "Positive",
+            "confidence_score": 0.96,
+            "aspects": [
+                {
+                    "feature": "effect",
+                    "sentiment": "Positive"
+                },
+                {
+                    "feature": "results",
+                    "sentiment": "Positive"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Ubtan Facewash",
+            "date": "22 January 2026",
+            "location": "Pune, IND",
+            "review_text": "Face pe ekdum thanda feel hota hai, best for summer.",
+            "emotion": "Positive",
+            "confidence_score": 0.84,
+            "aspects": [
+                {
+                    "feature": "quality",
+                    "sentiment": "Positive"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Ubtan Facewash",
+            "date": "22 December 2025",
+            "location": "Delhi, IND",
+            "review_text": "Pimple kam ho gaye, meri oily skin ke liye best hai.",
+            "emotion": "Positive",
+            "confidence_score": 0.89,
+            "aspects": [
+                {
+                    "feature": "results",
+                    "sentiment": "Positive"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Ubtan Facewash",
+            "date": "05 March 2026",
+            "location": "Bangalore, IND",
+            "review_text": "Skin bohot dry ho gayi, tight feel ho raha hai.",
+            "emotion": "Negative",
+            "confidence_score": 0.98,
+            "aspects": [
+                {
+                    "feature": "effect",
+                    "sentiment": "Negative"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Ubtan Facewash",
+            "date": "07 July 2025",
+            "location": "Bangalore, IND",
+            "review_text": "Behas mehenga hai, normal himalaya wala better lagta hai.",
+            "emotion": "Negative",
+            "confidence_score": 0.96,
+            "aspects": [
+                {
+                    "feature": "quality",
+                    "sentiment": "Negative"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Ubtan Facewash",
+            "date": "16 August 2025",
+            "location": "Pune, IND",
+            "review_text": "Bhai natural glow aa gaya, no need for makeup.",
+            "emotion": "Positive",
+            "confidence_score": 0.77,
+            "aspects": [
+                {
+                    "feature": "effect",
+                    "sentiment": "Positive"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Ubtan Facewash",
+            "date": "07 July 2025",
+            "location": "Jaipur, IND",
+            "review_text": "Gora nahi karta bhai, sab jhooth hai marketing ka.",
+            "emotion": "Negative",
+            "confidence_score": 0.75,
+            "aspects": [
+                {
+                    "feature": "quality",
+                    "sentiment": "Negative"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Ubtan Facewash",
+            "date": "15 April 2026",
+            "location": "Mumbai, IND",
+            "review_text": "Bhai natural glow aa gaya, no need for makeup.",
+            "emotion": "Positive",
+            "confidence_score": 0.91,
+            "aspects": [
+                {
+                    "feature": "effect",
+                    "sentiment": "Positive"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Ubtan Facewash",
+            "date": "14 April 2026",
+            "location": "Pune, IND",
+            "review_text": "Skin bohot dry ho gayi, tight feel ho raha hai.",
+            "emotion": "Negative",
+            "confidence_score": 0.95,
+            "aspects": [
+                {
+                    "feature": "effect",
+                    "sentiment": "Negative"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Ubtan Facewash",
+            "date": "24 December 2025",
+            "location": "Bangalore, IND",
+            "review_text": "Packaging bekaar hai, tube leak karti hai travel mein.",
+            "emotion": "Negative",
+            "confidence_score": 0.89,
+            "aspects": [
+                {
+                    "feature": "packaging",
+                    "sentiment": "Negative"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Ubtan Facewash",
+            "date": "28 January 2026",
+            "location": "Mumbai, IND",
+            "review_text": "Skin glow karne lagi hai, tan remove ho gaya finally.",
+            "emotion": "Positive",
+            "confidence_score": 0.88,
+            "aspects": [
+                {
+                    "feature": "effect",
+                    "sentiment": "Positive"
+                },
+                {
+                    "feature": "results",
+                    "sentiment": "Positive"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Ubtan Facewash",
+            "date": "17 February 2026",
+            "location": "Mumbai, IND",
+            "review_text": "Scrub particles bohot harsh hain, chubhte hain skin pe.",
+            "emotion": "Negative",
+            "confidence_score": 0.79,
+            "aspects": [
+                {
+                    "feature": "quality",
+                    "sentiment": "Negative"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Ubtan Facewash",
+            "date": "02 September 2025",
+            "location": "Delhi, IND",
+            "review_text": "Face pe ekdum thanda feel hota hai, best for summer.",
+            "emotion": "Positive",
+            "confidence_score": 0.91,
+            "aspects": [
+                {
+                    "feature": "quality",
+                    "sentiment": "Positive"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Ubtan Facewash",
+            "date": "13 June 2025",
+            "location": "Bangalore, IND",
+            "review_text": "Skin glow karne lagi hai, tan remove ho gaya finally.",
+            "emotion": "Positive",
+            "confidence_score": 0.87,
+            "aspects": [
+                {
+                    "feature": "effect",
+                    "sentiment": "Positive"
+                },
+                {
+                    "feature": "results",
+                    "sentiment": "Positive"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Ubtan Facewash",
+            "date": "24 March 2026",
+            "location": "Mumbai, IND",
+            "review_text": "Skin bohot dry ho gayi, tight feel ho raha hai.",
+            "emotion": "Negative",
+            "confidence_score": 0.79,
+            "aspects": [
+                {
+                    "feature": "effect",
+                    "sentiment": "Negative"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Ubtan Facewash",
+            "date": "28 July 2025",
+            "location": "Chennai, IND",
+            "review_text": "Bhai natural glow aa gaya, no need for makeup.",
+            "emotion": "Positive",
+            "confidence_score": 0.88,
+            "aspects": [
+                {
+                    "feature": "effect",
+                    "sentiment": "Positive"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Ubtan Facewash",
+            "date": "27 September 2025",
+            "location": "Pune, IND",
+            "review_text": "Skin glow karne lagi hai, tan remove ho gaya finally.",
+            "emotion": "Positive",
+            "confidence_score": 0.91,
+            "aspects": [
+                {
+                    "feature": "effect",
+                    "sentiment": "Positive"
+                },
+                {
+                    "feature": "results",
+                    "sentiment": "Positive"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Ubtan Facewash",
+            "date": "28 March 2026",
+            "location": "Pune, IND",
+            "review_text": "Scrub particles bohot harsh hain, chubhte hain skin pe.",
+            "emotion": "Negative",
+            "confidence_score": 0.77,
+            "aspects": [
+                {
+                    "feature": "quality",
+                    "sentiment": "Negative"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Ubtan Facewash",
+            "date": "26 May 2025",
+            "location": "Jaipur, IND",
+            "review_text": "Gora nahi karta bhai, sab jhooth hai marketing ka.",
+            "emotion": "Negative",
+            "confidence_score": 0.88,
+            "aspects": [
+                {
+                    "feature": "quality",
+                    "sentiment": "Negative"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Ubtan Facewash",
+            "date": "28 May 2025",
+            "location": "Chennai, IND",
+            "review_text": "Skin glow karne lagi hai, tan remove ho gaya finally.",
+            "emotion": "Positive",
+            "confidence_score": 0.84,
+            "aspects": [
+                {
+                    "feature": "effect",
+                    "sentiment": "Positive"
+                },
+                {
+                    "feature": "results",
+                    "sentiment": "Positive"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Ubtan Facewash",
+            "date": "09 December 2025",
+            "location": "Bangalore, IND",
+            "review_text": "Skin glow karne lagi hai, tan remove ho gaya finally.",
+            "emotion": "Positive",
+            "confidence_score": 0.78,
+            "aspects": [
+                {
+                    "feature": "effect",
+                    "sentiment": "Positive"
+                },
+                {
+                    "feature": "results",
+                    "sentiment": "Positive"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Ubtan Facewash",
+            "date": "28 December 2025",
+            "location": "Mumbai, IND",
+            "review_text": "Pimple kam ho gaye, meri oily skin ke liye best hai.",
+            "emotion": "Positive",
+            "confidence_score": 0.75,
+            "aspects": [
+                {
+                    "feature": "results",
+                    "sentiment": "Positive"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Ubtan Facewash",
+            "date": "13 January 2026",
+            "location": "Bangalore, IND",
+            "review_text": "Bohot refreshing! Haldi aur chandan ki smell mast hai.",
+            "emotion": "Positive",
+            "confidence_score": 0.96,
+            "aspects": [
+                {
+                    "feature": "fragrance",
+                    "sentiment": "Positive"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Ubtan Facewash",
+            "date": "29 September 2025",
+            "location": "Pune, IND",
+            "review_text": "Skin glow karne lagi hai, tan remove ho gaya finally.",
+            "emotion": "Positive",
+            "confidence_score": 0.85,
+            "aspects": [
+                {
+                    "feature": "effect",
+                    "sentiment": "Positive"
+                },
+                {
+                    "feature": "results",
+                    "sentiment": "Positive"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Ubtan Facewash",
+            "date": "27 July 2025",
+            "location": "Pune, IND",
+            "review_text": "Pimples aur badh gaye, suitable nahi hai sensitive skin ko.",
+            "emotion": "Negative",
+            "confidence_score": 0.99,
+            "aspects": [
+                {
+                    "feature": "results",
+                    "sentiment": "Negative"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Ubtan Facewash",
+            "date": "06 September 2025",
+            "location": "Bangalore, IND",
+            "review_text": "Bhai natural glow aa gaya, no need for makeup.",
+            "emotion": "Positive",
+            "confidence_score": 0.75,
+            "aspects": [
+                {
+                    "feature": "effect",
+                    "sentiment": "Positive"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Ubtan Facewash",
+            "date": "29 April 2025",
+            "location": "Jaipur, IND",
+            "review_text": "Bhai natural glow aa gaya, no need for makeup.",
+            "emotion": "Positive",
+            "confidence_score": 0.91,
+            "aspects": [
+                {
+                    "feature": "effect",
+                    "sentiment": "Positive"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Ubtan Facewash",
+            "date": "07 May 2025",
+            "location": "Mumbai, IND",
+            "review_text": "Bohot refreshing! Haldi aur chandan ki smell mast hai.",
+            "emotion": "Positive",
+            "confidence_score": 0.93,
+            "aspects": [
+                {
+                    "feature": "fragrance",
+                    "sentiment": "Positive"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Ubtan Facewash",
+            "date": "02 June 2025",
+            "location": "Chennai, IND",
+            "review_text": "Pimple kam ho gaye, meri oily skin ke liye best hai.",
+            "emotion": "Positive",
+            "confidence_score": 0.76,
+            "aspects": [
+                {
+                    "feature": "results",
+                    "sentiment": "Positive"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Ubtan Facewash",
+            "date": "19 February 2026",
+            "location": "Delhi, IND",
+            "review_text": "Gora nahi karta bhai, sab jhooth hai marketing ka.",
+            "emotion": "Negative",
+            "confidence_score": 0.79,
+            "aspects": [
+                {
+                    "feature": "quality",
+                    "sentiment": "Negative"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Ubtan Facewash",
+            "date": "14 October 2025",
+            "location": "Pune, IND",
+            "review_text": "Behas mehenga hai, normal himalaya wala better lagta hai.",
+            "emotion": "Negative",
+            "confidence_score": 0.88,
+            "aspects": [
+                {
+                    "feature": "quality",
+                    "sentiment": "Negative"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Ubtan Facewash",
+            "date": "01 February 2026",
+            "location": "Bangalore, IND",
+            "review_text": "Packaging bekaar hai, tube leak karti hai travel mein.",
+            "emotion": "Negative",
+            "confidence_score": 0.85,
+            "aspects": [
+                {
+                    "feature": "packaging",
+                    "sentiment": "Negative"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Ubtan Facewash",
+            "date": "23 June 2025",
+            "location": "Delhi, IND",
+            "review_text": "Face pe ekdum thanda feel hota hai, best for summer.",
+            "emotion": "Positive",
+            "confidence_score": 0.88,
+            "aspects": [
+                {
+                    "feature": "quality",
+                    "sentiment": "Positive"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Ubtan Facewash",
+            "date": "31 March 2026",
+            "location": "Delhi, IND",
+            "review_text": "Bhai natural glow aa gaya, no need for makeup.",
+            "emotion": "Positive",
+            "confidence_score": 0.98,
+            "aspects": [
+                {
+                    "feature": "effect",
+                    "sentiment": "Positive"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Ubtan Facewash",
+            "date": "22 May 2025",
+            "location": "Jaipur, IND",
+            "review_text": "Pimples aur badh gaye, suitable nahi hai sensitive skin ko.",
+            "emotion": "Negative",
+            "confidence_score": 0.98,
+            "aspects": [
+                {
+                    "feature": "results",
+                    "sentiment": "Negative"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Ubtan Facewash",
+            "date": "27 July 2025",
+            "location": "Chennai, IND",
+            "review_text": "Paisa vasool face wash, quantity achi hai.",
+            "emotion": "Positive",
+            "confidence_score": 0.91,
+            "aspects": [
+                {
+                    "feature": "price",
+                    "sentiment": "Positive"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Ubtan Facewash",
+            "date": "06 June 2025",
+            "location": "Bangalore, IND",
+            "review_text": "Packaging bekaar hai, tube leak karti hai travel mein.",
+            "emotion": "Negative",
+            "confidence_score": 0.93,
+            "aspects": [
+                {
+                    "feature": "packaging",
+                    "sentiment": "Negative"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Ubtan Facewash",
+            "date": "14 January 2026",
+            "location": "Mumbai, IND",
+            "review_text": "Scrub particles bohot harsh hain, chubhte hain skin pe.",
+            "emotion": "Negative",
+            "confidence_score": 0.81,
+            "aspects": [
+                {
+                    "feature": "quality",
+                    "sentiment": "Negative"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Ubtan Facewash",
+            "date": "18 June 2025",
+            "location": "Mumbai, IND",
+            "review_text": "Pimples aur badh gaye, suitable nahi hai sensitive skin ko.",
+            "emotion": "Negative",
+            "confidence_score": 0.85,
+            "aspects": [
+                {
+                    "feature": "results",
+                    "sentiment": "Negative"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Ubtan Facewash",
+            "date": "23 October 2025",
+            "location": "Mumbai, IND",
+            "review_text": "Pimple kam ho gaye, meri oily skin ke liye best hai.",
+            "emotion": "Positive",
+            "confidence_score": 0.96,
+            "aspects": [
+                {
+                    "feature": "results",
+                    "sentiment": "Positive"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Ubtan Facewash",
+            "date": "11 July 2025",
+            "location": "Jaipur, IND",
+            "review_text": "Smell itni strong hai sir dard ho jata hai.",
+            "emotion": "Negative",
+            "confidence_score": 0.85,
+            "aspects": [
+                {
+                    "feature": "fragrance",
+                    "sentiment": "Negative"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Ubtan Facewash",
+            "date": "21 December 2025",
+            "location": "Jaipur, IND",
+            "review_text": "Smell itni strong hai sir dard ho jata hai.",
+            "emotion": "Negative",
+            "confidence_score": 0.82,
+            "aspects": [
+                {
+                    "feature": "fragrance",
+                    "sentiment": "Negative"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Ubtan Facewash",
+            "date": "02 March 2026",
+            "location": "Bangalore, IND",
+            "review_text": "Bohot refreshing! Haldi aur chandan ki smell mast hai.",
+            "emotion": "Positive",
+            "confidence_score": 0.95,
+            "aspects": [
+                {
+                    "feature": "fragrance",
+                    "sentiment": "Positive"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Ubtan Facewash",
+            "date": "09 June 2025",
+            "location": "Jaipur, IND",
+            "review_text": "Skin glow karne lagi hai, tan remove ho gaya finally.",
+            "emotion": "Positive",
+            "confidence_score": 0.95,
+            "aspects": [
+                {
+                    "feature": "effect",
+                    "sentiment": "Positive"
+                },
+                {
+                    "feature": "results",
+                    "sentiment": "Positive"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Ubtan Facewash",
+            "date": "21 October 2025",
+            "location": "Chennai, IND",
+            "review_text": "Pimples aur badh gaye, suitable nahi hai sensitive skin ko.",
+            "emotion": "Negative",
+            "confidence_score": 0.85,
+            "aspects": [
+                {
+                    "feature": "results",
+                    "sentiment": "Negative"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Ubtan Facewash",
+            "date": "19 February 2026",
+            "location": "Bangalore, IND",
+            "review_text": "Pimple kam ho gaye, meri oily skin ke liye best hai.",
+            "emotion": "Positive",
+            "confidence_score": 0.95,
+            "aspects": [
+                {
+                    "feature": "results",
+                    "sentiment": "Positive"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Ubtan Facewash",
+            "date": "13 February 2026",
+            "location": "Pune, IND",
+            "review_text": "Pimples aur badh gaye, suitable nahi hai sensitive skin ko.",
+            "emotion": "Negative",
+            "confidence_score": 0.85,
+            "aspects": [
+                {
+                    "feature": "results",
+                    "sentiment": "Negative"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Ubtan Facewash",
+            "date": "09 March 2026",
+            "location": "Mumbai, IND",
+            "review_text": "Pimples aur badh gaye, suitable nahi hai sensitive skin ko.",
+            "emotion": "Negative",
+            "confidence_score": 0.95,
+            "aspects": [
+                {
+                    "feature": "results",
+                    "sentiment": "Negative"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Ubtan Facewash",
+            "date": "10 July 2025",
+            "location": "Pune, IND",
+            "review_text": "Pimple kam ho gaye, meri oily skin ke liye best hai.",
+            "emotion": "Positive",
+            "confidence_score": 0.86,
+            "aspects": [
+                {
+                    "feature": "results",
+                    "sentiment": "Positive"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Ubtan Facewash",
+            "date": "24 August 2025",
+            "location": "Jaipur, IND",
+            "review_text": "Paisa vasool face wash, quantity achi hai.",
+            "emotion": "Positive",
+            "confidence_score": 0.82,
+            "aspects": [
+                {
+                    "feature": "price",
+                    "sentiment": "Positive"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Ubtan Facewash",
+            "date": "20 October 2025",
+            "location": "Jaipur, IND",
+            "review_text": "Bhai natural glow aa gaya, no need for makeup.",
+            "emotion": "Positive",
+            "confidence_score": 0.78,
+            "aspects": [
+                {
+                    "feature": "effect",
+                    "sentiment": "Positive"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Ubtan Facewash",
+            "date": "16 January 2026",
+            "location": "Bangalore, IND",
+            "review_text": "Pimples aur badh gaye, suitable nahi hai sensitive skin ko.",
+            "emotion": "Negative",
+            "confidence_score": 0.76,
+            "aspects": [
+                {
+                    "feature": "results",
+                    "sentiment": "Negative"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Ubtan Facewash",
+            "date": "19 February 2026",
+            "location": "Pune, IND",
+            "review_text": "Scrub particles bohot harsh hain, chubhte hain skin pe.",
+            "emotion": "Negative",
+            "confidence_score": 0.76,
+            "aspects": [
+                {
+                    "feature": "quality",
+                    "sentiment": "Negative"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Ubtan Facewash",
+            "date": "04 August 2025",
+            "location": "Bangalore, IND",
+            "review_text": "Skin glow karne lagi hai, tan remove ho gaya finally.",
+            "emotion": "Positive",
+            "confidence_score": 0.81,
+            "aspects": [
+                {
+                    "feature": "effect",
+                    "sentiment": "Positive"
+                },
+                {
+                    "feature": "results",
+                    "sentiment": "Positive"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Ubtan Facewash",
+            "date": "31 July 2025",
+            "location": "Jaipur, IND",
+            "review_text": "Gora nahi karta bhai, sab jhooth hai marketing ka.",
+            "emotion": "Negative",
+            "confidence_score": 0.94,
+            "aspects": [
+                {
+                    "feature": "quality",
+                    "sentiment": "Negative"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Ubtan Facewash",
+            "date": "16 August 2025",
+            "location": "Pune, IND",
+            "review_text": "Skin bohot dry ho gayi, tight feel ho raha hai.",
+            "emotion": "Negative",
+            "confidence_score": 0.87,
+            "aspects": [
+                {
+                    "feature": "effect",
+                    "sentiment": "Negative"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Ubtan Facewash",
+            "date": "09 August 2025",
+            "location": "Bangalore, IND",
+            "review_text": "Bohot refreshing! Haldi aur chandan ki smell mast hai.",
+            "emotion": "Positive",
+            "confidence_score": 0.87,
+            "aspects": [
+                {
+                    "feature": "fragrance",
+                    "sentiment": "Positive"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Ubtan Facewash",
+            "date": "06 December 2025",
+            "location": "Bangalore, IND",
+            "review_text": "Skin glow karne lagi hai, tan remove ho gaya finally.",
+            "emotion": "Positive",
+            "confidence_score": 0.99,
+            "aspects": [
+                {
+                    "feature": "effect",
+                    "sentiment": "Positive"
+                },
+                {
+                    "feature": "results",
+                    "sentiment": "Positive"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Ubtan Facewash",
+            "date": "20 February 2026",
+            "location": "Jaipur, IND",
+            "review_text": "Paisa vasool face wash, quantity achi hai.",
+            "emotion": "Positive",
+            "confidence_score": 0.83,
+            "aspects": [
+                {
+                    "feature": "price",
+                    "sentiment": "Positive"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Ubtan Facewash",
+            "date": "15 April 2026",
+            "location": "Chennai, IND",
+            "review_text": "Scrub particles bohot harsh hain, chubhte hain skin pe.",
+            "emotion": "Negative",
+            "confidence_score": 0.96,
+            "aspects": [
+                {
+                    "feature": "quality",
+                    "sentiment": "Negative"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Ubtan Facewash",
+            "date": "13 October 2025",
+            "location": "Bangalore, IND",
+            "review_text": "Smell itni strong hai sir dard ho jata hai.",
+            "emotion": "Negative",
+            "confidence_score": 0.76,
+            "aspects": [
+                {
+                    "feature": "fragrance",
+                    "sentiment": "Negative"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Ubtan Facewash",
+            "date": "13 March 2026",
+            "location": "Delhi, IND",
+            "review_text": "Maza aa gaya dho ke, feel like fresh mogra.",
+            "emotion": "Positive",
+            "confidence_score": 0.9,
+            "aspects": [
+                {
+                    "feature": "quality",
+                    "sentiment": "Positive"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Ubtan Facewash",
+            "date": "05 March 2026",
+            "location": "Mumbai, IND",
+            "review_text": "Skin bohot dry ho gayi, tight feel ho raha hai.",
+            "emotion": "Negative",
+            "confidence_score": 0.98,
+            "aspects": [
+                {
+                    "feature": "effect",
+                    "sentiment": "Negative"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Ubtan Facewash",
+            "date": "04 March 2026",
+            "location": "Chennai, IND",
+            "review_text": "Smell itni strong hai sir dard ho jata hai.",
+            "emotion": "Negative",
+            "confidence_score": 0.94,
+            "aspects": [
+                {
+                    "feature": "fragrance",
+                    "sentiment": "Negative"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Ubtan Facewash",
+            "date": "22 March 2026",
+            "location": "Jaipur, IND",
+            "review_text": "Skin bohot dry ho gayi, tight feel ho raha hai.",
+            "emotion": "Negative",
+            "confidence_score": 0.9,
+            "aspects": [
+                {
+                    "feature": "effect",
+                    "sentiment": "Negative"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Ubtan Facewash",
+            "date": "26 January 2026",
+            "location": "Delhi, IND",
+            "review_text": "Packaging bekaar hai, tube leak karti hai travel mein.",
+            "emotion": "Negative",
+            "confidence_score": 0.83,
+            "aspects": [
+                {
+                    "feature": "packaging",
+                    "sentiment": "Negative"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Ubtan Facewash",
+            "date": "27 April 2025",
+            "location": "Jaipur, IND",
+            "review_text": "Pimple kam ho gaye, meri oily skin ke liye best hai.",
+            "emotion": "Positive",
+            "confidence_score": 0.9,
+            "aspects": [
+                {
+                    "feature": "results",
+                    "sentiment": "Positive"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Ubtan Facewash",
+            "date": "25 April 2025",
+            "location": "Pune, IND",
+            "review_text": "Paisa vasool face wash, quantity achi hai.",
+            "emotion": "Positive",
+            "confidence_score": 0.85,
+            "aspects": [
+                {
+                    "feature": "price",
+                    "sentiment": "Positive"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Ubtan Facewash",
+            "date": "15 July 2025",
+            "location": "Pune, IND",
+            "review_text": "Face pe ekdum thanda feel hota hai, best for summer.",
+            "emotion": "Positive",
+            "confidence_score": 0.97,
+            "aspects": [
+                {
+                    "feature": "quality",
+                    "sentiment": "Positive"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Ubtan Facewash",
+            "date": "15 September 2025",
+            "location": "Bangalore, IND",
+            "review_text": "Bohot refreshing! Haldi aur chandan ki smell mast hai.",
+            "emotion": "Positive",
+            "confidence_score": 0.96,
+            "aspects": [
+                {
+                    "feature": "fragrance",
+                    "sentiment": "Positive"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Ubtan Facewash",
+            "date": "11 January 2026",
+            "location": "Jaipur, IND",
+            "review_text": "Maza aa gaya dho ke, feel like fresh mogra.",
+            "emotion": "Positive",
+            "confidence_score": 0.95,
+            "aspects": [
+                {
+                    "feature": "quality",
+                    "sentiment": "Positive"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Ubtan Facewash",
+            "date": "12 December 2025",
+            "location": "Pune, IND",
+            "review_text": "Bhai natural glow aa gaya, no need for makeup.",
+            "emotion": "Positive",
+            "confidence_score": 0.99,
+            "aspects": [
+                {
+                    "feature": "effect",
+                    "sentiment": "Positive"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Ubtan Facewash",
+            "date": "28 March 2026",
+            "location": "Chennai, IND",
+            "review_text": "Pimple kam ho gaye, meri oily skin ke liye best hai.",
+            "emotion": "Positive",
+            "confidence_score": 0.76,
+            "aspects": [
+                {
+                    "feature": "results",
+                    "sentiment": "Positive"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Ubtan Facewash",
+            "date": "28 September 2025",
+            "location": "Mumbai, IND",
+            "review_text": "Gora nahi karta bhai, sab jhooth hai marketing ka.",
+            "emotion": "Negative",
+            "confidence_score": 0.94,
+            "aspects": [
+                {
+                    "feature": "quality",
+                    "sentiment": "Negative"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Ubtan Facewash",
+            "date": "13 August 2025",
+            "location": "Jaipur, IND",
+            "review_text": "Face pe ekdum thanda feel hota hai, best for summer.",
+            "emotion": "Positive",
+            "confidence_score": 0.96,
+            "aspects": [
+                {
+                    "feature": "quality",
+                    "sentiment": "Positive"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Ubtan Facewash",
+            "date": "02 May 2025",
+            "location": "Bangalore, IND",
+            "review_text": "Maza aa gaya dho ke, feel like fresh mogra.",
+            "emotion": "Positive",
+            "confidence_score": 0.84,
+            "aspects": [
+                {
+                    "feature": "quality",
+                    "sentiment": "Positive"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Ubtan Facewash",
+            "date": "10 April 2026",
+            "location": "Pune, IND",
+            "review_text": "Behas mehenga hai, normal himalaya wala better lagta hai.",
+            "emotion": "Negative",
+            "confidence_score": 0.99,
+            "aspects": [
+                {
+                    "feature": "quality",
+                    "sentiment": "Negative"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Ubtan Facewash",
+            "date": "28 March 2026",
+            "location": "Pune, IND",
+            "review_text": "Scrub particles bohot harsh hain, chubhte hain skin pe.",
+            "emotion": "Negative",
+            "confidence_score": 0.86,
+            "aspects": [
+                {
+                    "feature": "quality",
+                    "sentiment": "Negative"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Ubtan Facewash",
+            "date": "15 March 2026",
+            "location": "Bangalore, IND",
+            "review_text": "Gora nahi karta bhai, sab jhooth hai marketing ka.",
+            "emotion": "Negative",
+            "confidence_score": 0.97,
+            "aspects": [
+                {
+                    "feature": "quality",
+                    "sentiment": "Negative"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Ubtan Facewash",
+            "date": "22 November 2025",
+            "location": "Delhi, IND",
+            "review_text": "Scrub particles bohot harsh hain, chubhte hain skin pe.",
+            "emotion": "Negative",
+            "confidence_score": 0.75,
+            "aspects": [
+                {
+                    "feature": "quality",
+                    "sentiment": "Negative"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Ubtan Facewash",
+            "date": "07 July 2025",
+            "location": "Mumbai, IND",
+            "review_text": "Skin glow karne lagi hai, tan remove ho gaya finally.",
+            "emotion": "Positive",
+            "confidence_score": 0.91,
+            "aspects": [
+                {
+                    "feature": "effect",
+                    "sentiment": "Positive"
+                },
+                {
+                    "feature": "results",
+                    "sentiment": "Positive"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Ubtan Facewash",
+            "date": "05 April 2026",
+            "location": "Mumbai, IND",
+            "review_text": "Scrub particles bohot harsh hain, chubhte hain skin pe.",
+            "emotion": "Negative",
+            "confidence_score": 0.8,
+            "aspects": [
+                {
+                    "feature": "quality",
+                    "sentiment": "Negative"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Ubtan Facewash",
+            "date": "20 September 2025",
+            "location": "Pune, IND",
+            "review_text": "Maza aa gaya dho ke, feel like fresh mogra.",
+            "emotion": "Positive",
+            "confidence_score": 0.93,
+            "aspects": [
+                {
+                    "feature": "quality",
+                    "sentiment": "Positive"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Ubtan Facewash",
+            "date": "09 May 2025",
+            "location": "Jaipur, IND",
+            "review_text": "Pimple kam ho gaye, meri oily skin ke liye best hai.",
+            "emotion": "Positive",
+            "confidence_score": 0.75,
+            "aspects": [
+                {
+                    "feature": "results",
+                    "sentiment": "Positive"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Ubtan Facewash",
+            "date": "13 December 2025",
+            "location": "Pune, IND",
+            "review_text": "Scrub particles bohot harsh hain, chubhte hain skin pe.",
+            "emotion": "Negative",
+            "confidence_score": 0.8,
+            "aspects": [
+                {
+                    "feature": "quality",
+                    "sentiment": "Negative"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Ubtan Facewash",
+            "date": "03 April 2026",
+            "location": "Pune, IND",
+            "review_text": "Gora nahi karta bhai, sab jhooth hai marketing ka.",
+            "emotion": "Negative",
+            "confidence_score": 0.96,
+            "aspects": [
+                {
+                    "feature": "quality",
+                    "sentiment": "Negative"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Ubtan Facewash",
+            "date": "06 March 2026",
+            "location": "Delhi, IND",
+            "review_text": "Bohot refreshing! Haldi aur chandan ki smell mast hai.",
+            "emotion": "Positive",
+            "confidence_score": 0.87,
+            "aspects": [
+                {
+                    "feature": "fragrance",
+                    "sentiment": "Positive"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Ubtan Facewash",
+            "date": "12 January 2026",
+            "location": "Pune, IND",
+            "review_text": "Scrub particles bohot harsh hain, chubhte hain skin pe.",
+            "emotion": "Negative",
+            "confidence_score": 0.99,
+            "aspects": [
+                {
+                    "feature": "quality",
+                    "sentiment": "Negative"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Ubtan Facewash",
+            "date": "07 September 2025",
+            "location": "Chennai, IND",
+            "review_text": "Paisa vasool face wash, quantity achi hai.",
+            "emotion": "Positive",
+            "confidence_score": 0.9,
+            "aspects": [
+                {
+                    "feature": "price",
+                    "sentiment": "Positive"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Ubtan Facewash",
+            "date": "12 July 2025",
+            "location": "Chennai, IND",
+            "review_text": "Bohot refreshing! Haldi aur chandan ki smell mast hai.",
+            "emotion": "Positive",
+            "confidence_score": 0.94,
+            "aspects": [
+                {
+                    "feature": "fragrance",
+                    "sentiment": "Positive"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Ubtan Facewash",
+            "date": "24 March 2026",
+            "location": "Mumbai, IND",
+            "review_text": "Pimple kam ho gaye, meri oily skin ke liye best hai.",
+            "emotion": "Positive",
+            "confidence_score": 0.9,
+            "aspects": [
+                {
+                    "feature": "results",
+                    "sentiment": "Positive"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Ubtan Facewash",
+            "date": "03 February 2026",
+            "location": "Jaipur, IND",
+            "review_text": "Pimples aur badh gaye, suitable nahi hai sensitive skin ko.",
+            "emotion": "Negative",
+            "confidence_score": 0.77,
+            "aspects": [
+                {
+                    "feature": "results",
+                    "sentiment": "Negative"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Ubtan Facewash",
+            "date": "18 May 2025",
+            "location": "Chennai, IND",
+            "review_text": "Pimples aur badh gaye, suitable nahi hai sensitive skin ko.",
+            "emotion": "Negative",
+            "confidence_score": 0.88,
+            "aspects": [
+                {
+                    "feature": "results",
+                    "sentiment": "Negative"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Ubtan Facewash",
+            "date": "01 July 2025",
+            "location": "Bangalore, IND",
+            "review_text": "Skin bohot dry ho gayi, tight feel ho raha hai.",
+            "emotion": "Negative",
+            "confidence_score": 0.94,
+            "aspects": [
+                {
+                    "feature": "effect",
+                    "sentiment": "Negative"
+                }
+            ]
+        },
+        {
+            "product": "Mamaearth Ubtan Facewash",
+            "date": "24 April 2025",
+            "location": "Mumbai, IND",
+            "review_text": "Behas mehenga hai, normal himalaya wala better lagta hai.",
+            "emotion": "Negative",
+            "confidence_score": 0.86,
+            "aspects": [
+                {
+                    "feature": "quality",
                     "sentiment": "Negative"
                 }
             ]

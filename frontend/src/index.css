@@ -542,3 +542,10 @@ h1 {
   background: var(--accent-negative-bg);
   color: var(--accent-negative);
 }
+
+.spin {
+  animation: spin 1s linear infinite;
+}
+@keyframes spin {
+  100% { transform: rotate(360deg); }
+}

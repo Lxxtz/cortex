@@ -7,7 +7,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   return true;
 });
 
-function startAnalysis() {
+async function startAnalysis() {
   if (window.hasCortexInjected) return;
   window.hasCortexInjected = true;
 
